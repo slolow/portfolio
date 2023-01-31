@@ -6,19 +6,13 @@ body {
     font-weight: 700;
 }
 
-.full-screen {
-    height: 100vh;
-    width: 100%;
-    position: relative;
-    top: 0;
-    overflow: hidden;
+h1 {
+    font-size: 10rem;
 }
 
-.container {
-    position: absolute;
-    top: 20vh;
-    left: 5vw; /*  horizontally aligned with header */
-    padding: 0 2.5vw; /*  same padding as header */
+section {
+    padding: 7.5vw;
+    overflow: hidden;
 }
 
 .primary-button {
@@ -52,7 +46,7 @@ body {
         top: 0;
     }
     100% {
-        top: 30px;
+        top: 1vh;
     }
 }
 
@@ -61,23 +55,21 @@ body {
 header {
     position: fixed;
     top: 1vh;
-    left: 5vw; /* centered */
-    width: 85vw;
-    height: 10vh;
+    left: 5%; /* centered */ 
+    width: 85%;
     z-index: 1;
-    background-color: #FFF;
+    background-color: rgba(255, 255, 255, 0.9);
     color: #000;
-/*     margin: 0 auto; */
-/*     border-bottom: solid 5px #000; */
     border-radius: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 2.5vw;
+    padding: 0 2.5%;
 }
 
 header img {
     height: 8vh;
+    transition: opacity 750ms;
 }
 
 #github-logo:hover {
@@ -99,6 +91,7 @@ header a {
     color: #000;
     font-size: 1.5rem;
     text-decoration: none;
+    transition: color 750ms;
 }
 
 header a:hover {
@@ -111,7 +104,16 @@ header a:hover {
 }
 
 #banner p {
-    font-size: 3.5rem;
+    font-size: 4.8rem;
+    color: #000;
+}
+
+#banner .arrow.down {
+    color: #FF1F25;
+}
+
+#banner a {
+    text-decoration: none;
 }
 
 span.name {
@@ -119,6 +121,15 @@ span.name {
     font-weight: 900;
     font-style: italic;
 }
+
+span.name::after {
+    content: 'Slo.';
+}
+
+.paragraph-name:hover span.name::after {
+    content: 'Laszlo Starost.';
+}
+
 /*  about-me */
 
 #about-me {
