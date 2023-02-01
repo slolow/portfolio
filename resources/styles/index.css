@@ -64,12 +64,13 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 2.5%;
+    padding: 0.3% 2.5%;
 }
 
 header img {
     height: 8vh;
     transition: opacity 750ms;
+    vertical-align: middle;
 }
 
 #github-logo:hover {
@@ -120,14 +121,6 @@ span.name {
     color: #FF1F25;
     font-weight: 900;
     font-style: italic;
-}
-
-span.name::after {
-    content: 'Slo.';
-}
-
-.paragraph-name:hover span.name::after {
-    content: 'Laszlo Starost.';
 }
 
 /*  about-me */
