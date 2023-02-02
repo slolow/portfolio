@@ -1,43 +1,52 @@
 /*  universal-styles */
 html,
 body {
-    font-size: 16px;
+    font-size: 24px;
     font-family: 'Noto Sans', 'Helvetica', 'Arial', sans-serif;
     font-weight: 700;
 }
 
 h1 {
-    font-size: 10rem;
+    font-size: 6.67rem;
 }
 
-section {
+h2 {
+    font-size: 3.2rem;
+}
+
+h3 {
+    font-size: 2.5rem;
+}
+
+h4 {
+    font-size: 1.15rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+.main-section {
     padding: 7.5vw;
     overflow: hidden;
 }
 
 .primary-button {
-    background-color: #FFF;
-    color: #FF1F25;
-    border: solid 5px #FF1F25;
+    border: solid 5px;
     border-radius: 20px;
-    width: 20vw;
-    height: 10vh;
-    font-size: 2rem;
+    width: 30%;
+    font-size: 1.33rem;
     font-family: 'Noto Sans', 'Helvetica', 'Arial', sans-serif;
     font-weight: 700;
     text-transform: uppercase;
+    padding: 3%;
     transition: background-color 400ms;
-}
-
-.primary-button:hover {
-    background-color: #FF1F25;
-    color: #FFF;
 }
 
 .arrow.down {
     position: relative;
     font-weight: 900;
-    font-size: 10rem;
+    font-size: 6.67rem;
     animation: upAndDown 1s linear 0s infinite alternate;
 }
 
@@ -90,8 +99,6 @@ header ul li {
 
 header a {
     color: #000;
-    font-size: 1.5rem;
-    text-decoration: none;
     transition: color 750ms;
 }
 
@@ -105,16 +112,12 @@ header a:hover {
 }
 
 #banner p {
-    font-size: 4.8rem;
+    font-size: 3.2rem;
     color: #000;
 }
 
 #banner .arrow.down {
     color: #FF1F25;
-}
-
-#banner a {
-    text-decoration: none;
 }
 
 span.name {
@@ -127,4 +130,107 @@ span.name {
 
 #about-me {
     background-color: #FF1F25;
+}
+
+/* projects */
+
+#projects h2, #projects h3, #projects h4 {
+    color: #05A3FF;
+}
+
+#projects h2 {
+    margin-bottom: 6.67rem;
+}
+
+.project-container h4 {
+    margin-top: 0;
+}
+
+#projects p {
+    line-height: 2rem;
+}
+
+.project-container {
+    max-width: 100%;
+    display: grid;
+    grid-template-areas: 'title title'
+                         'description video'
+                         'tech-stack features';
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 5.5rem 3fr 2fr;
+    grid-gap: 3rem 2rem;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #FFF; 
+    margin-bottom: 6.67rem;
+    justify-items: start;
+    align-items: start;
+    padding: 0 2rem;
+    border-radius: 1.25rem;
+}
+
+.project-title {
+    grid-area: 1 / 1 / span 1 / span 2;
+}
+
+.project-description {
+    grid-area: 2 / 1 / span 1 / span 1;
+}
+
+.project-video-container {
+    grid-area: 2 / 2 / span 1 / span 1;
+    width: 100%;
+    height: 100%;
+}
+
+.project-tech-stack {
+    grid-area: 3 / 1 / span 1 / span 1;
+}
+
+.project-features {
+    grid-area: 3 / 2 / span 1 /span 1;
+}
+
+.project-video-container iframe {
+    width: 100%;
+    height: 80%;
+    border-radius: 0 1rem;
+}
+
+.project-video-container.empty {
+    overflow: hidden;
+    background-color: #FFF;
+    border-radius: 0 1rem;
+}
+
+#totoro {
+    height: 200px;
+    width: 200px; /* change width to 400px to have two totoros walking side by side */
+    margin: 10% auto;
+    background-image: url("../images/todoro-miyazaki.gif");
+    transform: scaleX(-1);
+}
+
+#projects a {
+    color: #05A3FF;
+    text-decoration: underline;
+}
+
+#projects a:hover {
+    text-decoration: none;
+}
+
+#projects li {
+    padding-bottom: 1rem;
+}
+
+#projects a.primary-button {
+    background-color: #05A3FF;
+    border-color:  #05A3FF;
+    text-decoration: none;
+    color: #FFF;
+}
+
+#projects a.primary-button:hover{
+    color: #05A3FF;
+    background-color: #FFF;
 }
