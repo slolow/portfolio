@@ -17,10 +17,10 @@
         <a href="https://github.com/slolow" target="_blank"><img src="resources/images/github-mark/github-mark.svg" alt="github logo" id="github-logo"></a>
         <nav>
             <ul>
-                <li><a href="">home</a></li>
-                <li><a href="">about me</a></li>
-                <li><a href="">projects</a></li>
-                <li><a href="">contact</a></li>
+                <li><a href="#banner">home</a></li>
+                <li><a href="#about-me">about me</a></li>
+                <li><a href="#projects">projects</a></li>
+                <li><a href="#contact">contact</a></li>
             </ul>
         </nav>
     </header>
@@ -28,7 +28,7 @@
     <main>
 
         <!-- banner -->
-        <section id="banner">
+        <section id="banner" class="main-section">
                 <p>Hi,</p>
                 <p class="name-paragraph">my name is <span class="name">Slo.</span></p>
                 <p>I'm a fullstack developer.</p>
@@ -36,11 +36,173 @@
         </section>
 
         <!--  about me -->
-        <section id="about-me">
+        <section id="about-me" class="main-section">
             <h1>Test</h1>
-            <h1>In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to
+<!--             <h1>In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to
                 demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used 
-                as a placeholder before final copy is available.</h1>
+                as a placeholder before final copy is available.</h1> -->
+        </section>
+
+        <!-- projects -->
+        <section id="projects" class="main-section">
+            <h2>Projects</h2>
+
+            <!-- portfolio -->
+            <div class="project-container">
+                <h3 class="project-title">Portfolio</h3>
+                <section class="project-description">
+                    <h4>Description:</h4>
+                    <p>This Portfolio is the current webpage you're looking at. 
+                        It's part of the <a href="https://join.codecademy.com/learn/paths/front-end-engineer-career-path-b/" target="_blank">Front-End Engineer Career Path</a> from Codecademy,
+                        which I'm currently working on.</p>
+                </section>
+                <div class="project-video-container empty">
+                    <div id="totoro"></div>
+                </div>   
+                <section class="project-tech-stack">
+                    <h4>Tech Stack:</h4>
+                    <ul>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JavaScript</li>
+                    </ul>
+                </section> 
+                <section class="project-features">
+                    <h4>Within this Portfolio a user can:</h4>  
+                    <ul>
+                        <li>Learn about me</li>
+                        <li>See my projects</li>
+                        <li>Contact me</li>
+                    </ul>
+                </section>
+            </div>
+
+            <!-- book-rating-app -->
+            <div class="project-container">
+                <h3 class="project-title">Book Review App</h3>
+                <section class="project-description">
+                    <h4>Description:</h4>
+                    <p>This book rating app is part of the <a href="https://cs50.harvard.edu/web/2018/" target="_blank">CS50’s Web Programming with Python and JavaScript</a> course from Harvard University.</p> 
+                </section>
+                <div class="project-video-container">
+                    <h4>Project-Video (no sound):</h4>
+                    <iframe src="https://www.youtube.com/embed/6rESpya70nc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>   
+                <section class="project-tech-stack">
+                    <h4>Tech Stack:</h4>
+                    <ul>
+                        <li>Python ( <a href="https://flask.palletsprojects.com/en/2.2.x/" target="_blank">Flask</a> )</li>
+                        <li>PostgreSQL</li>
+                        <li>HTML</li>
+                        <li><a href="https://getbootstrap.com/" target="_blank">Bootstrap</a></li>
+                        <li><a href="https://www.goodreads.com/" target="_blank">Goodreads</a> API</li>
+                    </ul>
+                </section> 
+                <section class="project-features">
+                    <h4>Within this App a user can:</h4>  
+                    <ul>
+                        <li>Registrate, login and logout</li>
+                        <li>Search for books</li>
+                        <li>Submit reviews</li>
+                        <li>See average rating from <a href="https://www.goodreads.com/" target="_blank">Goodreads</a></li>
+                        <li>Make API requests</li>
+                    </ul>
+                </section>
+            </div>
+
+            <!-- chat-app -->
+            <div class="project-container">
+                <h3 class="project-title">Chat App</h3>
+                <section class="project-description">
+                    <h4>Description:</h4>
+                    <p>This chat app is part of the <a href="https://cs50.harvard.edu/web/2018/" target="_blank">CS50’s Web Programming with Python and JavaScript</a> course from Harvard University.</p> 
+                </section>
+                <div class="project-video-container">
+                    <h4>Project-Video (no sound):</h4>
+                    <iframe src="https://www.youtube.com/embed/IbtaYdm6HOw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>   
+                <section class="project-tech-stack">
+                    <h4>Tech Stack:</h4>
+                    <ul>
+                        <li>JavaScript</li>
+                        <li>Python ( <a href="https://flask.palletsprojects.com/en/2.2.x/" target="_blank">Flask</a> )</li>
+                        <li><a href="https://sass-lang.com/" target="_blank">SASS</a></li>
+                        <li>HTML</li>
+                        <li><a href="https://socket.io/">Socket.IO</a></li>
+                    </ul>
+                </section> 
+                <section class="project-features">
+                    <h4>Within this App a user can:</h4>  
+                    <ul>
+                        <li>Sign in</li>
+                        <li>Create channels (chatrooms)</li>
+                        <li>See and join existing channels</li>
+                        <li>Send and receive messages in real time</li>
+                        <li>Create and send drawings</li>
+                    </ul>
+                </section>
+            </div>
+
+            <!-- Dashboard electrical network -->
+            <div class="project-container">
+                <h3 class="project-title">Dashboard electrical grid</h3>
+                <section class="project-description">
+                    <h4>Description:</h4>
+                    <p>This dashboard shows the timeseries for various metrics in an fictive electrical grid. It's the first web app I've made. All timeseries are randomly generated.</p> 
+                </section>
+                <div class="project-video-container">
+                    <h4>Project-Video (no sound):</h4>
+                    <iframe src="https://www.youtube.com/embed/m30xeWKA3Js" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>   
+                <section class="project-tech-stack">
+                    <h4>Tech Stack:</h4>
+                    <ul>
+                        <li>Python ( <a href="https://dash.plotly.com/" target="_blank">Dash</a> )</li>
+                    </ul>
+                </section> 
+                <section class="project-features">
+                    <h4>Within this App a user can:</h4>  
+                    <ul>
+                        <li>Select between rural and industrial part of the grid</li>
+                        <li>Select a day</li>
+                        <li>Select between active and reactive power</li>
+                        <li>Select between measurement and different forecast methods</li>
+                    </ul>
+                   <p>to update the displayed metrics.</p> 
+                </section>
+            </div>
+
+            <!-- Cloud -->
+            <div class="project-container">
+                <h3 class="project-title">Minimal cloud</h3>
+                <section class="project-description">
+                    <h4>Description:</h4>
+                    <p>This is a simple cloud to upload files and create folders.</p> 
+                </section>
+                <div class="project-video-container">
+                    <h4>Project-Video (no sound):</h4>
+                    <iframe src="https://www.youtube.com/embed/oixHn4sj0GY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>   
+                <section class="project-tech-stack">
+                    <h4>Tech Stack:</h4>
+                    <ul>
+                        <li>Python ( <a href="https://flask.palletsprojects.com/en/2.2.x/" target="_blank">Flask</a> )</li>
+                        <li>HTML</li>
+                        <li><a href="https://palletsprojects.com/p/jinja/" target="_blank">Jinja2</a></li>
+                        <li><a href="https://getbootstrap.com/" target="_blank">Bootstrap</a></li>
+                    </ul>
+                </section> 
+                <section class="project-features">
+                    <h4>Within this App a user can:</h4>  
+                    <ul>
+                        <li>Login and Logout</li>
+                        <li>Create and delete folder</li>
+                        <li>Upload files</li>
+                    </ul>
+                </section>
+            </div>
+            <!-- <a href="https://github.com/slolow" target="_blank" class="primary-button">More Projects</a> -->
+            <button class="primary-button" type="button"><a href="https://github.com/slolow" target="_blank">More projects</a></button>
         </section>
     </main>
     
