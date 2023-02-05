@@ -22,7 +22,7 @@ h4 {
     font-size: 1.15rem;
 }
 
-a {
+a:hover {
     text-decoration: none;
 }
 
@@ -106,11 +106,13 @@ header ul li {
 
 header a {
     color: #000;
-    transition: color 750ms;
+    text-decoration: none;
+    transition: color 400ms;
 }
 
 header a:hover {
     color: #FF1F25;
+/*     color: #05A3FF; */
 }
 
 /*  banner */
@@ -125,10 +127,16 @@ header a:hover {
 
 #banner .arrow.down {
     color: #FF1F25;
+    /* color: #05A3FF; */
+}
+
+#banner a {
+    text-decoration: none;
 }
 
 span.name {
     color: #FF1F25;
+    /* color: #05A3FF; */
     font-weight: 900;
     font-style: italic;
 }
@@ -136,7 +144,71 @@ span.name {
 /*  about-me */
 
 #about-me {
-    background-color: #FF1F25;
+    background-color: #05A3FF;
+/*     color: #FFF; */
+}
+
+#about-me h2 {
+    color: #FFF;
+}
+
+#about-me article {
+    line-height: 2rem;
+    white-space:pre-line;
+    color: #000;
+/*     width: 60%; */
+}
+
+.about-me-grid-container {
+    display: grid;
+    grid-template-columns: 1fr 20rem;
+    grid-column-gap: 2rem;
+    align-items: center;
+    margin-bottom: 6.67rem;
+    background-color: #FFF;
+    padding: 2rem;
+    border-radius: 1.25rem;
+}
+
+#about-me img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 1.25rem;
+}
+
+#about-me a.primary-button {
+    background-color: #05A3FF;
+    border-color:  #FFF;
+/*     text-decoration: none; */
+    color: #FFF;
+}
+
+#about-me a {
+    color: #05A3FF;
+    /* text-decoration: underline; */
+}
+
+#about-me a:hover {
+   /*  text-decoration: none; */
+}
+
+#more-about-me {
+    margin: 6.67rem 0;
+    background-color: #FFF;
+    padding: 2rem;
+    border-radius: 1.25rem;
+    display: none;
+}
+
+#more-about-me ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#more-about-me li {
+    padding-bottom: 1rem;
 }
 
 /* projects */
@@ -219,12 +291,12 @@ span.name {
 
 #projects a {
     color: #05A3FF;
-    text-decoration: underline;
+/*     text-decoration: underline; */
 }
 
-#projects a:hover {
+/* #projects a:hover {
     text-decoration: none;
-}
+} */
 
 #projects li {
     padding-bottom: 1rem;
@@ -233,18 +305,14 @@ span.name {
 #projects a.primary-button {
     background-color: #05A3FF;
     border-color:  #05A3FF;
-    text-decoration: none;
+/*     text-decoration: none; */
     color: #FFF;
-}
-
-#projects a.primary-button:hover{
-/*     color: #05A3FF;
-    background-color: #FFF; */
 }
 
 /*  contact */
 #contact {
-    background-color: #05A3FF;
+    /* background-color: #05A3FF; */
+    background-color: #FF1F25;
     color: #FFF;
 }
 
