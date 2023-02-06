@@ -65,38 +65,8 @@
         <section id="projects" class="main-section">
             <h2>Projects</h2>
 
-            <!-- portfolio -->
-            <div class="project-container">
-                <h3 class="project-title">Portfolio</h3>
-                <section class="project-description">
-                    <h4>Description:</h4>
-                    <p>This Portfolio is the current webpage you're looking at. 
-                        It's part of the <a href="https://join.codecademy.com/learn/paths/front-end-engineer-career-path-b/" target="_blank">Front-End Engineer Career Path</a> from Codecademy,
-                        which I'm currently working on.</p>
-                </section>
-                <div class="project-video-container empty">
-                    <div id="totoro"></div>
-                </div>   
-                <section class="project-tech-stack">
-                    <h4>Tech Stack:</h4>
-                    <ul>
-                        <li>HTML</li>
-                        <li>CSS</li>
-                        <li>JavaScript</li>
-                    </ul>
-                </section> 
-                <section class="project-features">
-                    <h4>Within this Portfolio a user can:</h4>  
-                    <ul>
-                        <li>Learn about me</li>
-                        <li>See my projects</li>
-                        <li>Contact me</li>
-                    </ul>
-                </section>
-            </div>
-
             <!-- book-rating-app -->
-            <div class="project-container">
+            <div class="project-container" id="book-rating-project">
                 <h3 class="project-title">Book Review App</h3>
                 <section class="project-description">
                     <h4>Description:</h4>
@@ -219,7 +189,44 @@
                     </ul>
                 </section>
             </div>
-            <a href="https://github.com/slolow" target="_blank" class="primary-button">More Projects</a>
+
+            <!-- portfolio -->
+            <div class="project-container">
+                <h3 class="project-title">Portfolio</h3>
+                <section class="project-description">
+                    <h4>Description:</h4>
+                    <p>This Portfolio is the current webpage you're looking at. 
+                        It's part of the <a href="https://join.codecademy.com/learn/paths/front-end-engineer-career-path-b/" target="_blank">Front-End Engineer Career Path</a> from Codecademy,
+                        which I'm currently working on.</p>
+                </section>
+                <div class="project-video-container empty">
+                    <div id="totoro"></div>
+                </div>   
+                <section class="project-tech-stack">
+                    <h4>Tech Stack:</h4>
+                    <ul>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JavaScript</li>
+                    </ul>
+                </section> 
+                <section class="project-features">
+                    <h4>Within this Portfolio a user can:</h4>  
+                    <ul>
+                        <li>Learn about me</li>
+                        <li>See my projects</li>
+                        <li>Contact me</li>
+                    </ul>
+                </section>
+            </div>
+
+            <!-- next and previous buttons -->
+            <div class="button-container">
+                <button type="button" class="primary-button" id="previous-button" disabled>Previous Project</button>
+                <button type="button" class="primary-button" id="next-button">Next Project</button>
+            </div>
+
+            <!-- <a href="https://github.com/slolow" target="_blank" class="primary-button">More Projects</a> -->
         </section>
 
         <!-- contact -->

@@ -50,6 +50,11 @@ a:hover {
     box-shadow: 0.3rem 0.3rem 0.25rem #000;
 }
 
+.button-container {
+    display: flex;
+    justify-content: space-between;
+}
+
 .arrow.down {
     position: relative;
     font-weight: 900;
@@ -69,15 +74,14 @@ a:hover {
 /*  header */
 
 header {
+    box-sizing: border-box;
     position: fixed;
-    top: 1vh;
-    left: 5%; /* centered */ 
-    width: 85%;
+    width: 100%;
     z-index: 1;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: #FFF;
     color: #000;
-    border-radius: 5px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     padding: 0.3% 2.5%;
@@ -94,7 +98,6 @@ header img {
 }
 
 header ul {
-/*     display: flex; */
     list-style: none;
     padding-left: 0;
 }
@@ -112,7 +115,6 @@ header a {
 
 header a:hover {
     color: #FF1F25;
-/*     color: #05A3FF; */
 }
 
 /*  banner */
@@ -127,7 +129,6 @@ header a:hover {
 
 #banner .arrow.down {
     color: #FF1F25;
-    /* color: #05A3FF; */
 }
 
 #banner a {
@@ -136,7 +137,6 @@ header a:hover {
 
 span.name {
     color: #FF1F25;
-    /* color: #05A3FF; */
     font-weight: 900;
     font-style: italic;
 }
@@ -145,7 +145,6 @@ span.name {
 
 #about-me {
     background-color: #05A3FF;
-/*     color: #FFF; */
 }
 
 #about-me h2 {
@@ -156,7 +155,6 @@ span.name {
     line-height: 2rem;
     white-space:pre-line;
     color: #000;
-/*     width: 60%; */
 }
 
 .about-me-grid-container {
@@ -180,17 +178,11 @@ span.name {
 #about-me a.primary-button {
     background-color: #05A3FF;
     border-color:  #FFF;
-/*     text-decoration: none; */
     color: #FFF;
 }
 
 #about-me a {
     color: #05A3FF;
-    /* text-decoration: underline; */
-}
-
-#about-me a:hover {
-   /*  text-decoration: none; */
 }
 
 #more-about-me {
@@ -199,6 +191,7 @@ span.name {
     padding: 2rem;
     border-radius: 1.25rem;
     display: none;
+    scroll-margin-top: 10rem;
 }
 
 #more-about-me ul {
@@ -245,6 +238,12 @@ span.name {
     align-items: start;
     padding: 0 2rem;
     border-radius: 1.25rem;
+    scroll-margin-top: 3.66275rem;
+}
+
+/* only show book-rating-app as default */
+.project-container:not(#book-rating-project) {
+    display: none;
 }
 
 .project-title {
@@ -291,27 +290,27 @@ span.name {
 
 #projects a {
     color: #05A3FF;
-/*     text-decoration: underline; */
 }
-
-/* #projects a:hover {
-    text-decoration: none;
-} */
 
 #projects li {
     padding-bottom: 1rem;
 }
 
-#projects a.primary-button {
+#projects .primary-button {
     background-color: #05A3FF;
     border-color:  #05A3FF;
-/*     text-decoration: none; */
     color: #FFF;
+}
+
+/* set variable as workaround to update hover pseudo class via javaSript */
+#previous-button:hover, #next-button:hover {
+    top: var(--top);
+    cursor: var(--cursor);
+    box-shadow: var(--box-shadow);
 }
 
 /*  contact */
 #contact {
-    /* background-color: #05A3FF; */
     background-color: #FF1F25;
     color: #FFF;
 }
@@ -321,7 +320,6 @@ span.name {
 }
 
 /* footer */
-
 .copyright {
     margin-left: 1rem;
 }
