@@ -16,12 +16,15 @@ const setStylePropertiesOnElement = (element, stylePropertiesObj) => {
 /* show fullname in banner when mouseover name */
 const myNameIs = async () => {
   const nameSpan = document.getElementsByClassName("name")[0];
+  nameSpan.style.animation = 'none';
   lyrics = ["What?", "Who?", "Chicka-chicka", "Laszlo Starost."];
   for (lyric of lyrics) {
     nameSpan.innerHTML = lyric;
     await delay(1000);
   }
 };
+
+window.addEventListener('scroll', myNameIs, {once: true});
 
 const nameP = document.getElementsByClassName("name-paragraph")[0];
 nameP.addEventListener("mouseover", myNameIs, { once: true });

@@ -137,8 +137,19 @@ header a:hover {
 
 span.name {
     color: #FF1F25;
-    font-weight: 900;
+/*     font-weight: 900; */
     font-style: italic;
+    animation: dance 1s infinite ease-in-out alternate;
+    position: relative;
+}
+
+@keyframes dance {
+    0% {
+        font-weight: 400;
+    }
+    100% {
+        font-weight: 900;
+    }
 }
 
 /*  about-me */
