@@ -24,7 +24,7 @@ const myNameIs = async () => {
   }
 };
 
-window.addEventListener('scroll', myNameIs, {once: true});
+/* window.addEventListener('scroll', myNameIs, {once: true}); */
 
 const nameP = document.getElementsByClassName("name-paragraph")[0];
 nameP.addEventListener("mouseover", myNameIs, { once: true });
@@ -129,7 +129,7 @@ contactSubmit.addEventListener('click', ) */
 
 /* show thank you message after submit */
 
-const showThankYouMsg = () => document.getElementById('thank-you-msg').style.display = 'block';
+/* const showThankYouMsg = () => document.getElementById('sending-msg').style.display = 'block';
 
 const contactForm = document.getElementById('contact-form');
-contactForm.addEventListener('submit', showThankYouMsg);
+contactForm.addEventListener('submit', showSendingMsg); */
