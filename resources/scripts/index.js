@@ -118,3 +118,18 @@ const showNextOrPreviousProject = event => {
 
 nextButton.addEventListener('click', showNextOrPreviousProject);
 previousButton.addEventListener('click', showNextOrPreviousProject);
+
+
+/* contact */
+
+/* enable button when form ready to submit */
+
+/* const contactSubmit = document.getElementById('contact-form-submit');
+contactSubmit.addEventListener('click', ) */
+
+/* show thank you message after submit */
+
+const showThankYouMsg = () => document.getElementById('thank-you-msg').style.display = 'block';
+
+const contactForm = document.getElementById('contact-form');
+contactForm.addEventListener('submit', showThankYouMsg);

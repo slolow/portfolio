@@ -232,7 +232,7 @@
         <!-- contact -->
         <section id="contact" class="main-section">
             <h2>Contact</h2>
-            <form action="https://formsubmit.co/266516a83c21c8595171f1c2d327d848" method="POST">
+            <form action="https://formsubmit.co/266516a83c21c8595171f1c2d327d848" method="POST" id="contact-form">
                 <label for="fname">First name:</label>
                 <input type="text" name="first&nbsp;name" placeholder="first name (optional)" id="fname" minlength="3" maxlength="50">
                 <label for="lname">Last name:</label>
@@ -243,7 +243,7 @@
                 <textarea name="message" cols="30" rows="10" placeholder="Your message" id="message" maxlength="5000" required></textarea>
 
                 <!-- reroute the user to this page -->
-                <input type="hidden" name="_next" value="https://slolow.github.io/">
+                <input type="hidden" name="_next" value="https://slolow.github.io/#thank-you-msg">
 
                 <!-- the subject of the mail I recive -->
                 <input type="hidden" name="_subject" value="Contact via portfolio!">
@@ -253,8 +253,10 @@
                 
                 <!-- template of how the email I receive will look like -->
                 <input type="hidden" name="_template" value="table">
-                <input type="submit" class="primary-button" value="Send">
+                <!-- <input type="submit" class="primary-button" value="Send" id="contact-form-submit" disabled> -->
+                <input type="submit" class="primary-button" value="Send" id="contact-form-submit">
             </form> 
+            <p id="thank-you-msg">Thank you</p>
         </section>
 
         <footer>

@@ -369,6 +369,18 @@ span.name {
     border-color: #FFF;
     color: #FFF;
 }
+
+/* #contact input.primary-button:disabled, input.primary-button[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none;
+    top: 0;
+} */
+
+#thank-you-msg {
+    display: none;
+}
+
 /* footer */
 .copyright {
     margin-left: 1rem;
