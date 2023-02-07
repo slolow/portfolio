@@ -233,9 +233,27 @@
         <section id="contact" class="main-section">
             <h2>Contact</h2>
             <form action="https://formsubmit.co/266516a83c21c8595171f1c2d327d848" method="POST">
-                <input type="text" name="first&nbsp;name" placeholder="first name" required>
-                <input type="email" name="email" placeholder="email" required>
-                <input type="submit">
+                <label for="fname">First name:</label>
+                <input type="text" name="first&nbsp;name" placeholder="first name (optional)" id="fname" minlength="3" maxlength="50">
+                <label for="lname">Last name:</label>
+                <input type="text" name="last&nbsp;name" placeholder="last name" id="lname" minlength="3" maxlength="50" required>
+                <label for="email">Email Adress:</label>
+                <input type="email" name="email" placeholder="email" id="email" maxlength="256" required>
+                <label for="message">Message:</label>
+                <textarea name="message" cols="30" rows="10" placeholder="Your message" id="message" maxlength="5000" required></textarea>
+
+                <!-- reroute the user to this page -->
+                <input type="hidden" name="_next" value="https://slolow.github.io/">
+
+                <!-- the subject of the mail I recive -->
+                <input type="hidden" name="_subject" value="Contact via portfolio!">
+
+                <!-- the autoresponse that will be send to the user -->
+                <input type="hidden" name="_autoresponse" value="Hello here is Slo. Thank you for contacting me. I'll try to answer your message as fast as possible. King regards.">
+                
+                <!-- template of how the email I receive will look like -->
+                <input type="hidden" name="_template" value="table">
+                <input type="submit" class="primary-button" value="Send">
             </form> 
         </section>
 

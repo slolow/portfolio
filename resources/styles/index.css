@@ -12,6 +12,7 @@ h1 {
 
 h2 {
     font-size: 3.2rem;
+    margin-top: 0;
 }
 
 h3 {
@@ -32,6 +33,9 @@ a:hover {
 }
 
 .primary-button {
+    box-sizing: border-box;
+    display: block;
+    width: 30%;
     border: solid 5px;
     border-radius: 20px;
     font-size: 1.33rem;
@@ -187,9 +191,12 @@ span.name {
 }
 
 #about-me a.primary-button {
+/*     width: 12.03641rem; */
     background-color: #05A3FF;
     border-color:  #FFF;
     color: #FFF;
+    text-decoration: none;
+    text-align: center;
 }
 
 #about-me a {
@@ -330,6 +337,38 @@ span.name {
     color: #FFF;
 }
 
+#contact form {
+    display: flex;
+    flex-direction: column;
+}
+
+#contact input {
+    margin: 1rem 0;
+}
+
+#contact textarea {
+    margin-top: 1rem;
+}
+
+#contact input:not(input.primary-button), #contact textarea {
+    padding: 1rem;
+    border: none;
+    border-radius: 2px;
+    background-color: #FFF;
+}
+
+#contact input:not(input.primary-button):focus-visible, #contact textarea:focus-visible {
+    outline: 3px solid #FF1F25;
+    outline-offset: -0.25rem;
+}
+
+#contact input.primary-button {
+/*     border: 5px solid #FFF;
+    border-radius: 20px; */
+    background-color: #FF1F25;
+    border-color: #FFF;
+    color: #FFF;
+}
 /* footer */
 .copyright {
     margin-left: 1rem;
