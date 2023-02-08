@@ -134,21 +134,25 @@ header a:hover {
 /*  banner */
 #banner {
 /*     background-color: #FFF; */
-    background-color: #ffdd18;
+/*     background-color: #ffdd18; */
+    background-color: #FF1F25;
 }
 
 #banner p {
     font-size: 3.2rem;
     /* color: #000; */
-    color: #005cef;
+/*     color: #005cef; */
+    color: #FFF;
 }
 
 #banner p:first-child {
-    color: #FF1F25;
+    /* color: #FF1F25; */
+    color: #ffdd18;
 }
 
 #banner .arrow.down {
-    color: #FF1F25;
+/*     color: #FF1F25; */
+    color: #ffdd18;
 }
 
 #banner a {
@@ -156,7 +160,8 @@ header a:hover {
 }
 
 span.name {
-    color: #FF1F25;
+/*     color: #FF1F25; */
+    color: #ffdd18;
 /*     font-weight: 900; */
     font-style: italic;
     animation: dance 1s infinite ease-in-out alternate;
