@@ -13,22 +13,29 @@ const setStylePropertiesOnElement = (element, stylePropertiesObj) => {
 
 
 /* banner */
-/* show fullname in banner when mouseover name */
+/* show fullname in banner when in view field */
 const myNameIs = async () => {
-  const nameSpan = document.getElementsByClassName("name")[0];
-  nameSpan.style.animation = 'none';
-  lyrics = ["What?", "Who?", "Chicka-chicka", "Laszlo Starost."];
-  for (lyric of lyrics) {
-    nameSpan.innerHTML = lyric;
-    await delay(1000);
+  const nameSpan = document.getElementById("full-name");
+  
+  /* start animation when full-name span (nameSpan) is completly in view field  */
+  if (innerHeight + scrollY >= nameSpan.getBoundingClientRect().bottom) {
+
+    /* remove event listener during execution of animation */
+    window.removeEventListener('scroll', myNameIs);
+
+    /* animation */
+    lyrics = ["What?", "Who?", "Chicka-chicka", "Laszlo."];
+    for (lyric of lyrics) {
+      nameSpan.innerHTML = lyric;
+      await delay(1000);
+    }
+
+    /* reactive event listener after animation execution */
+    window.addEventListener('scroll', myNameIs);
   }
 };
 
-window.addEventListener('scroll', myNameIs, {once: true});
-/* window.addEventListener('load', myNameIs, {once:true}); */
-
-/* const nameP = document.getElementsByClassName("name-paragraph")[0];
-nameP.addEventListener("mouseover", myNameIs, { once: true }); */
+window.addEventListener('scroll', myNameIs);
 
 
 /* about-me */
@@ -60,17 +67,16 @@ const enabledButtonStyleProperties = {
   '--top': '0.1rem', 
   '--cursor': 'pointer', 
   '--box-shadow': '0.3rem 0.3rem #FF1F25'
- /*  '--box-shadow': '0.3rem 0.3rem 0.25rem #000' */
 };
 const disabledButtonStyleProperties = {
   '--top': '0', 
-  '--cursor': 'not-allowed', 
+  '--cursor': 'normal',
   '--box-shadow': 'none'
 };
 
 const setDisabledButtonStyle = button => {
   setStylePropertiesOnElement(button, disabledButtonStyleProperties);
-  button.style.opacity = 0.3;
+  button.style.opacity = 0;
 }
 
 const setEnabledButtonStyle = button => {
@@ -96,10 +102,20 @@ setButtonStyle(previousButton);
 let currentShownProject = 0;
 
 const showNextOrPreviousProject = event => {
-  /* hide current displayed project and show either next or previous */
+
+  /* hide current displayed project */
   projects[currentShownProject].style.display = 'none';
-  event.target.id === 'next-button' ? currentShownProject++ : currentShownProject--;
-/*   projects[currentShownProject].scrollIntoView({inline: 'start'}); */
+
+  /* show dahsboard project if event fired by first-link-project (in about-me section), next project if fired by next-button, previous button if fired by previous-button */
+  if (event.target.id === 'first-project-link') {
+    currentShownProject = 2;
+  } else if (event.target.id === 'next-button')  {
+    currentShownProject++;
+  } else {
+    currentShownProject--;
+  }
+
+  /* show new project */
   projects[currentShownProject].style.display = 'grid';
   projects[currentShownProject].scrollIntoView({behavior: 'smooth'});
 
@@ -118,8 +134,10 @@ const showNextOrPreviousProject = event => {
   setButtonStyle(nextButton);
 }
 
+const firstProjectLink = document.getElementById('first-project-link');
 nextButton.addEventListener('click', showNextOrPreviousProject);
 previousButton.addEventListener('click', showNextOrPreviousProject);
+firstProjectLink.addEventListener('click', showNextOrPreviousProject);
 
 
 /* contact */

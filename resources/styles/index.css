@@ -62,7 +62,8 @@ a:hover {
 .arrow.down {
     position: relative;
     font-weight: 900;
-    font-size: 6.67rem;
+/*     font-size: 6.67rem; */
+    font-size: 10rem;
     animation: upAndDown 1s linear 0s infinite alternate;
 }
 
@@ -139,7 +140,8 @@ header a:hover {
 }
 
 #banner p {
-    font-size: 3.2rem;
+/*     font-size: 3.2rem; */
+    font-size: 5.2rem;
     /* color: #000; */
 /*     color: #005cef; */
     color: #FFF;
@@ -147,7 +149,11 @@ header a:hover {
 
 #banner p:first-child {
     /* color: #FF1F25; */
+    font-size: 10rem;
     color: #ffdd18;
+/*     margin-top: 3rem;
+    margin-bottom: 5rem; */
+    margin: 5.5rem 0;
 }
 
 #banner .arrow.down {
@@ -159,13 +165,13 @@ header a:hover {
     text-decoration: none;
 }
 
-span.name {
-/*     color: #FF1F25; */
-    color: #ffdd18;
-/*     font-weight: 900; */
+span.yellow {
+    color: yellow;
+}
+
+span.dancing {
     font-style: italic;
     animation: dance 1s infinite ease-in-out alternate;
-    position: relative;
 }
 
 @keyframes dance {
@@ -263,8 +269,8 @@ span.name {
 /*     background-color: #FFF; */
 /*     padding: 2rem; */
 /*     border-radius: 1.25rem; */
-/*     color: #FFF; */
-    color: #ffdd18;
+    color: #FFF;
+/*     color: #ffdd18; */
     display: none;
     scroll-margin-top: 5rem;
 }
