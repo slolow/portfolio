@@ -14,7 +14,8 @@
 </head>
 <body>
     <header>
-        <a href="https://github.com/slolow" target="_blank"><img src="resources/images/github-mark/github-mark.svg" alt="github logo" id="github-logo"></a>
+<!--         <a href="https://github.com/slolow" target="_blank"><img src="resources/images/github-mark/github-mark.svg" alt="github logo" id="github-logo"></a> -->
+        <a href="https://github.com/slolow" target="_blank" id="github-logo"><img src="resources/images/github-mark/github-mark-white.svg" alt="github logo"></a>
         <nav>
             <ul>
                 <li><a href="#banner">home</a></li>
@@ -44,8 +45,23 @@
                 You're invited to check some of my projects <a href="#projects">here</a>.
                 I'm searching for an opportunity to work in the field of web development to learn more about it.</article>
                 <img src="resources/images/slo.jpg" alt="foto-of-the-author">
+                <section id="more-about-me">
+                    <ul>
+                        <li>🎓 M.Sc. in electrical engineering</li>
+<!--                         <li>💻 Worked for <a href="https://www.sma.de/" target="_blank">SMA</a>, <a href="https://www.iee.fraunhofer.de/" target="_blank">Fraunhofer IEE</a>, <a href="https://www.htw-berlin.de/" target="_blank">HTW</a> as a student</li> -->
+                        <li>💻 Worked for <a href="https://www.sma.de/" target="_blank">SMA</a>, <a href="https://www.iee.fraunhofer.de/" target="_blank">Fraunhofer IEE</a>, <a href="https://www.htw-berlin.de/" target="_blank">HTW</a></li>
+                        <li>🏙️ Live in Berlin</li>
+                        <li>🗣️ Speak german, french, english</li>
+                        <li>⚽ Love to play football</li>
+                        <li>🎼 Listen to a lot of music</li>
+                        <li>📽️ Love the cinema</li>
+                        <li>🍳 Like cooking and love eating</li>
+                        <li>⌨️ Love to code (コードを書くのが大好き)</li>
+                        <li>🙏 kind, respectful and polite person</li>
+                    </ul>
+                </section>
             </div>
-            <section id="more-about-me">
+<!--             <section id="more-about-me">
                 <ul>
                     <li>🎓 M.Sc. in electrical engineering</li>
                     <li>💻 Worked for <a href="https://www.sma.de/" target="_blank">SMA</a>, <a href="https://www.iee.fraunhofer.de/" target="_blank">Fraunhofer IEE</a>, <a href="https://www.htw-berlin.de/" target="_blank">HTW</a> as a student</li>
@@ -57,7 +73,7 @@
                     <li>🍳 Like cooking and love eating</li>
                     <li>🙏 kind, respectful and polite person</li>
                 </ul>
-            </section>
+            </section> -->
             <a href="#more-about-me" class="primary-button" id="more-about-me-button">Show more</a>
         </section>
 
@@ -201,6 +217,7 @@
                 </section>
                 <div class="project-video-container empty">
                     <div id="totoro"></div>
+<!--                     <hr> -->
                 </div>   
                 <section class="project-tech-stack">
                     <h4>Tech Stack:</h4>
@@ -231,35 +248,50 @@
 
         <!-- contact -->
         <section id="contact" class="main-section">
-            <h2>Contact</h2>
-            <form action="https://formsubmit.co/266516a83c21c8595171f1c2d327d848" method="POST" id="contact-form">
-                <label for="fname">First name:</label>
-                <input type="text" name="first&nbsp;name" placeholder="first name (optional)" id="fname" minlength="3" maxlength="50">
-                <label for="lname">Last name:</label>
-                <input type="text" name="last&nbsp;name" placeholder="last name" id="lname" minlength="3" maxlength="50" required>
-                <label for="email">Email Adress:</label>
-                <input type="email" name="email" placeholder="email" id="email" maxlength="256" required>
-                <label for="message">Message:</label>
-                <textarea name="message" cols="30" rows="10" placeholder="Your message" id="message" maxlength="5000" required></textarea>
-
-                <!-- reroute the user to this page -->
-                <input type="hidden" name="_next" value="https://slolow.github.io/#thank-you-msg">
-
-                <!-- the subject of the mail I recive -->
-                <input type="hidden" name="_subject" value="Contact via portfolio!">
-
-                <!-- the autoresponse that will be send to the user -->
-                <input type="hidden" name="_autoresponse" value="Hello here is Slo. Thank you for contacting me. I'll try to answer your message as fast as possible. King regards.">
-                
-                <!-- template of how the email I receive will look like -->
-                <input type="hidden" name="_template" value="table">
-
-                <!-- like this I can directly reply to the user from the mail I received  -->
-                <input type="hidden" name="_replyto">
-
-                <!-- <input type="submit" class="primary-button" value="Send" id="contact-form-submit" disabled> -->
-                <input type="submit" class="primary-button" value="Send" id="contact-form-submit">
-            </form> 
+            <h2>Here's my number, so call me, maybe</h2>
+            <div class="flex-container">
+                <form action="https://formsubmit.co/266516a83c21c8595171f1c2d327d848" method="POST" id="contact-form">
+                    <label for="fname">First name:</label>
+                    <input type="text" name="first&nbsp;name" placeholder="first name (optional)" id="fname" minlength="3" maxlength="50">
+                    <label for="lname">Last name:</label>
+                    <input type="text" name="last&nbsp;name" placeholder="last name" id="lname" minlength="3" maxlength="50" required>
+                    <label for="email">Email Adress:</label>
+                    <input type="email" name="email" placeholder="email" id="email" maxlength="256" required>
+                    <label for="message">Message:</label>
+                    <textarea name="message" cols="30" rows="10" placeholder="Your message" id="message" maxlength="5000" required></textarea>
+    
+                    <!-- reroute the user to this page -->
+                    <input type="hidden" name="_next" value="https://slolow.github.io/#thank-you-msg">
+    
+                    <!-- the subject of the mail I recive -->
+                    <input type="hidden" name="_subject" value="Contact via portfolio!">
+    
+                    <!-- the autoresponse that will be send to the user -->
+                    <input type="hidden" name="_autoresponse" value="Hello here is Slo. Thank you for contacting me. I'll try to answer your message as fast as possible. King regards.">
+                    
+                    <!-- template of how the email I receive will look like -->
+                    <input type="hidden" name="_template" value="table">
+    
+                    <!-- like this I can directly reply to the user from the mail I received  -->
+                    <input type="hidden" name="_replyto">
+    
+                    <!-- <input type="submit" class="primary-button" value="Send" id="contact-form-submit" disabled> -->
+                    <input type="submit" class="primary-button" value="Send" id="contact-form-submit">
+                </form>
+                <div class="i-love-to-code">
+                    <p>コ</p>
+                    <p>ー</p>
+                    <p>ド</p>
+                    <p>を</p>
+                    <p>書</p>
+                    <p>く</p>
+                    <p>の</p>
+                    <p>が</p>
+                    <p>大</p>
+                    <p>好</p>
+                    <p>き</p>
+                </div>
+            </div>
         </section>
 
         <footer>

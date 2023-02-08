@@ -24,10 +24,11 @@ const myNameIs = async () => {
   }
 };
 
-/* window.addEventListener('scroll', myNameIs, {once: true}); */
+window.addEventListener('scroll', myNameIs, {once: true});
+/* window.addEventListener('load', myNameIs, {once:true}); */
 
-const nameP = document.getElementsByClassName("name-paragraph")[0];
-nameP.addEventListener("mouseover", myNameIs, { once: true });
+/* const nameP = document.getElementsByClassName("name-paragraph")[0];
+nameP.addEventListener("mouseover", myNameIs, { once: true }); */
 
 
 /* about-me */
@@ -58,7 +59,8 @@ const totalNumberOfProjects = 5;
 const enabledButtonStyleProperties = {
   '--top': '0.1rem', 
   '--cursor': 'pointer', 
-  '--box-shadow': '0.3rem 0.3rem 0.25rem #000'
+  '--box-shadow': '0.3rem 0.3rem #FF1F25'
+ /*  '--box-shadow': '0.3rem 0.3rem 0.25rem #000' */
 };
 const disabledButtonStyleProperties = {
   '--top': '0', 
