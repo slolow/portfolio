@@ -158,7 +158,8 @@ header a:hover {
 
 #banner .arrow.down {
 /*     color: #FF1F25; */
-    color: #ffdd18;
+ /*    color: #ffdd18; */
+ color: #FFF;
 }
 
 #banner a {
@@ -170,7 +171,7 @@ span.yellow {
 }
 
 span.dancing {
-    font-style: italic;
+/*     font-style: italic; */
     animation: dance 1s infinite ease-in-out alternate;
 }
 
@@ -290,10 +291,11 @@ span.dancing {
 #projects {
 /*     background-color: #FF1F25; */
 /*     background-color: #ffdd18; */
-/*     background-color: #FFF; */
-    background-color: #ffdd18;
+    background-color: #FFF;
+/*     background-color: #ffdd18; */
 /*     color: #FFF; */
     color: #005cef;
+    /* color: #FFF; */
 }
 
 /* #projects h2, #projects h3, #projects h4 {
@@ -302,18 +304,18 @@ span.dancing {
 
 #projects h2 {
 /*     margin-bottom: 6.67rem; */
-/*     color: #FF1F25; */
+    color: #FF1F25;
 /*     color: #003286; */
-    color: #005cef;
+/*     color: #005cef; */
 /*     text-decoration: underline wavy #005cef; */
-    text-decoration: underline wavy #FF1F25;
-    text-underline-offset: 1rem;
+/*     text-decoration: underline wavy #FF1F25;
+    text-underline-offset: 1rem; */
     margin-bottom: 3rem;
 }
 
 .project-container h3 {
     margin: 1rem 0;
-    font-style: italic;
+/*     font-style: italic; */
 }
 
 .project-container h4 {
@@ -323,11 +325,13 @@ span.dancing {
 .project-container h3, .project-container h4 {
 /*     color: #ffdd18; */
 /*     color: #003286; */
-    color: #005cef;
+/*     color: #005cef; */
+    color: #FFF;
 }
 
 .project-container h4 {
-    color: #FF1F25;
+    /* color: #FF1F25; */
+    color: #005cef;
 }
 
 #projects p {
@@ -341,24 +345,37 @@ span.dancing {
                          'description video'
                          'tech-stack features';
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 4rem 3fr 2fr;
+    grid-template-rows: 4rem 1fr 1fr;
     grid-gap: 2rem 2rem;
 /*     background-color: rgba(0, 0, 0, 0.5); */
-/*     background-color:#005cef; */
-    background-color: #ffdd18;
+    background-color:#005cef;
+/*     background-color: #ffdd18; */
 /*     background-color: #FF1F25; */
-    /* border: 5px solid #005cef; */
-    border: 5px dashed #FF1F25;
+    border: 5px solid #005cef;
+/*     border: 5px dashed #FF1F25; */
 /*     color: #FFF;  */
 /*     color: #ffdd18; */
 /*     margin-bottom: 6.67rem; */
     margin-bottom: 1rem;
-    justify-items: start;
-    align-items: start;
-    padding: 0 2rem;
+    /* justify-items: start; */
+    justify-items: stretch;
+/*     align-items: start; */
+    align-items: stretch;
+    padding: 1rem 2rem;
 /*     border-radius: 1.25rem; */
 /*     border-radius: 5px; */
     scroll-margin-top: 3.66275rem;
+}
+
+.project-container > section, .project-container > div {
+    /* background-color: #FF1F25; */
+    /* background-color: #005cef; */
+    background-color: #FFF;
+/*     padding: 0 1rem; */
+}
+
+.project-container > section {
+    padding: 1rem;
 }
 
 /* only show book-rating-app as default */
@@ -389,15 +406,17 @@ span.dancing {
 }
 
 .project-video-container iframe {
+/*     width: 90%;
+    height: 80%; */
     width: 100%;
-    height: 80%;
+    height: 100%;
 /*     border-radius: 0 1rem; */
 }
 
 .project-video-container.empty {
     overflow: hidden;
-/*     background-color: #FFF; */
-    background-color: #ffdd18;
+    background-color: #FFF;
+/*     background-color: #ffdd18; */
 /*     border-radius: 0 1rem; */
 }
 
@@ -421,7 +440,8 @@ span.dancing {
 /*     color: #921805; */
 /*     color: #6a0f01; */
 /*     color: #005cef; */
-    color: #003286;
+/*     color: #003286; */
+    color: #FF1F25;
     text-decoration: none;
 /*     transition: opacity 750ms; */
 }
@@ -443,7 +463,8 @@ span.dancing {
     background-color: #005cef;
     border-color: #005cef;
     /* color: #FFF; */
-    color: #ffdd18;
+    color: #FFF;
+/*     color: #ffdd18; */
 }
 
 /* set variable as workaround to update hover pseudo class via javaSript */
@@ -460,8 +481,13 @@ span.dancing {
 }
 
 #contact h2 {
-/*     color: #FFF; */
-    color: #ffdd18;
+    color: #FFF;
+    background-color: #005cef;
+    padding: 1rem;
+    text-align: center;
+/*     color: #005cef; */
+/*     color: #003286; */
+/*     color: #ffdd18; */
 }
 
 .flex-container {
@@ -506,7 +532,8 @@ span.dancing {
         color: #FF1F25;
     }
     100% {
-       color: #ffdd18;
+       /* color: #ffdd18; */
+       color: #FFF;
     }
 }
 
@@ -543,18 +570,24 @@ span.dancing {
     border: none;
     border-radius: 2px;
 /*     background-color: #FFF; */
-    background-color: #ffdd18;
+/*     background-color: #ffdd18; */
+    /* color: #005cef; */
+/*     color: #FFF;
+    background-color: #005cef; */
     color: #005cef;
+    background-color: #FFF;
 }
 
 #contact label {
-    color: #ffdd18;
+/*     color: #ffdd18; */
 }
 
 /* change placeholder color for all browsers */
 /* Chrome, Firefox, Opera, Safari 10.1+ */
 #contact input:not(input.primary-button)::placeholder, #contact textarea::placeholder { 
     color: #FF1F25;
+    color: #FFF;
+    color: #005cef;
 }
 
 /* Internet Explorer 10-11 */
@@ -576,19 +609,24 @@ span.dancing {
 #contact input.primary-button {
 /*     border: 5px solid #FFF;
     border-radius: 20px; */
-/*     background-color: #FF1F25;
-    border-color: #FFF; */
-    background-color: #ffdd18;
-    border-color: #ffdd18;
+    /* background-color: #FF1F25; */
+    background-color: #FFF;
+    border-color: #FFF;
+/*     background-color: #005cef;
+    border-color: #005cef; */
+/*     background-color: #ffdd18;
+    border-color: #ffdd18; */
 /*     background-color: #005cef;
     border-color: #005cef; */
 /*     color: #FFF; */
     color: #FF1F25;
+/*     color: #FFF; */
     width: 60%;
 }
 
 #contact input.primary-button:hover {
     box-shadow: 0.2rem 0.2rem #005cef;
+    /* box-shadow: 0.2rem 0.2rem #FFF; */
 }
 
 /* #contact input.primary-button:disabled, input.primary-button[disabled] {
