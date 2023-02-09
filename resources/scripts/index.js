@@ -63,11 +63,18 @@ const projects = document.getElementsByClassName('project-container');
 const totalNumberOfProjects = 5; 
 
 /* set default hover properties and styles for enabled and disabled buttons*/
-const enabledButtonStyleProperties = {
-  '--top': '0.1rem', 
+const enabledNextButtonStyleProperties = {
+/*   '--top': '0.1rem',  */
   '--cursor': 'pointer', 
   '--box-shadow': '0.3rem 0.3rem #FF1F25'
 };
+
+const enabledPreviousButtonStyleProperties = {
+/*     '--top': '0.1rem',  */
+    '--cursor': 'pointer', 
+    '--box-shadow': '-0.3rem 0.3rem #FF1F25'
+};
+
 const disabledButtonStyleProperties = {
   '--top': '0', 
   '--cursor': 'normal',
@@ -80,8 +87,8 @@ const setDisabledButtonStyle = button => {
 }
 
 const setEnabledButtonStyle = button => {
-  setStylePropertiesOnElement(button, enabledButtonStyleProperties);
   button.style.opacity = 1;
+  button.id === 'next-button' ? setStylePropertiesOnElement(button, enabledNextButtonStyleProperties) : setStylePropertiesOnElement(button, enabledPreviousButtonStyleProperties);
 }
 
 const setButtonStyle = button => {
@@ -103,6 +110,14 @@ let currentShownProject = 0;
 
 const showNextOrPreviousProject = event => {
 
+  /* get project marker points (blue and red dots under project) */
+  const buttonContainerChildrens = document.getElementsByClassName('button-container')[0].children;
+  const buttonContainerChildrensArr = Array.from(buttonContainerChildrens);
+  const projectPoints = buttonContainerChildrensArr.filter(children => children.className === 'project-point');
+
+  /* color current project point to blue */
+  projectPoints[currentShownProject].style.backgroundColor = 'blue';
+
   /* hide current displayed project */
   projects[currentShownProject].style.display = 'none';
 
@@ -119,12 +134,16 @@ const showNextOrPreviousProject = event => {
   projects[currentShownProject].style.display = 'grid';
   projects[currentShownProject].scrollIntoView({behavior: 'smooth'});
 
-  /* disable buttons when limits reached (first and last project) enabled buttons otherwise */
+
+  /* disable buttons when limits reached (first and last project) enabled buttons otherwise and round the corner of project-container*/
   if (currentShownProject === 0) {
+    projects[currentShownProject].style['border-radius'] = '1.25rem 1.25rem 0 1.25rem';
     previousButton.disabled = true;
   } else if (currentShownProject === totalNumberOfProjects-1) {
+    projects[currentShownProject].style['border-radius'] = '1.25rem 1.25rem 1.25rem 0';
     nextButton.disabled = true;
   } else {
+    projects[currentShownProject].style['border-radius'] = '1.25rem 1.25rem 0 0';
     previousButton.disabled = false;
     nextButton.disabled = false;
   }
@@ -132,6 +151,9 @@ const showNextOrPreviousProject = event => {
   /* update button styles according to disabled property */
   setButtonStyle(previousButton);
   setButtonStyle(nextButton);
+
+  /* update project point (marker) to red */
+  projectPoints[currentShownProject].style.backgroundColor = 'red';
 }
 
 const firstProjectLink = document.getElementById('first-project-link');
