@@ -134,7 +134,7 @@ header a:hover {
 /*     color: #FF1F25; */
 /*     color: #ffdd18; */
 /*     opacity: 0.3; */
-    text-shadow: 0.05rem 0.05rem #FF1F25;
+    text-shadow: -0.05rem 0.05rem #FF1F25;
 }
 
 /*  banner */
@@ -156,7 +156,7 @@ header a:hover {
     /* color: #FF1F25; */
     font-size: 10rem;
     color: #ffdd18;
-    text-shadow: 0.5rem 0.5rem #005cef;
+    text-shadow: -0.5rem 0.5rem #005cef;
 /*     margin-top: 3rem;
     margin-bottom: 5rem; */
     margin: 5.5rem 0;
@@ -311,8 +311,8 @@ span.dancing {
 #projects h2 {
 /*     margin-bottom: 6.67rem; */
     color: #FF1F25;
-    text-shadow: 0.16rem 0.16rem #005cef;
-    text-shadow: 0.5rem 0.5rem #005cef;
+/*     text-shadow: 0.16rem 0.16rem #005cef; */
+    text-shadow: -0.5rem 0.5rem #005cef;
 /*     color: #003286; */
 /*     color: #005cef; */
 /*     text-decoration: underline wavy #005cef; */
@@ -528,7 +528,7 @@ span.dancing {
 }
 
 #contact h2 span  {
-    text-shadow: 0.16rem 0.16rem #FF1F25;
+    text-shadow: -0.16rem 0.16rem #FF1F25;
 }
 
 .flex-container {
@@ -666,7 +666,7 @@ span.dancing {
 }
 
 #contact input.primary-button:hover {
-    box-shadow: 0.2rem 0.2rem #005cef;
+    box-shadow: 0.3rem 0.3rem #005cef;
     /* box-shadow: 0.2rem 0.2rem #FFF; */
 }
 
