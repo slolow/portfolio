@@ -4,6 +4,11 @@ body {
     font-size: 24px;
     font-family: 'Noto Sans', 'Helvetica', 'Arial', sans-serif;
     font-weight: 700;
+    scroll-behavior: smooth;
+    
+    /* set scroll-padding-top to scroll evrything to the bottom of the header */
+    scroll-padding-top: var(--scroll-padding-top);
+/*     scroll-margin-top: var(--scroll-margin-top); */
 }
 
 h1 {
@@ -51,13 +56,15 @@ a:hover {
 .primary-button:hover {
     top: 0.1rem;
     cursor: pointer;
-    box-shadow: 0.3rem 0.3rem 0.25rem #000;
+/*     box-shadow: 0.3rem 0.3rem 0.25rem #000; */
 }
 
 .button-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: #005cef;
+    border-radius: 0 0 1.25rem 1.25rem;
 }
 
 .arrow.down {
@@ -174,6 +181,7 @@ header a:hover {
 
 span.yellow {
     color: yellow;
+    text-shadow: -0.26rem 0.26rem #005cef;
 }
 
 span.dancing {
@@ -196,6 +204,7 @@ span.dancing {
     /* background-color: #05A3FF; */
     /* background-color: #ffdd18; */
     background-color: #005cef;
+    display: none;
 }
 
 #about-me h2 {
@@ -369,10 +378,11 @@ span.dancing {
 /*     align-items: start; */
     align-items: stretch;
     padding: 1rem 2rem;
-    border-radius: 1.25rem 1.25rem 0 1.25rem;
+    border-radius: 1.25rem 1.25rem 0 0;
+/*     box-shadow: -1.25rem -1.25rem #ff1f25; */
 /*     border-radius: 5px; */
 /*     scroll-margin-top: 3.66275rem; */
-    scroll-margin-top: 5rem;
+/*     scroll-margin-top: 5rem; */
 }
 
 .project-container > section, #projects iframe {
@@ -494,13 +504,15 @@ span.dancing {
 
 /* set variable as workaround to update hover pseudo class via javaSript */
 #previous-button:hover, #next-button:hover {
-    top: var(--top);
+/*     top: var(--top); */
+    top: 0;
     cursor: var(--cursor);
     box-shadow: var(--box-shadow);
 }
 
 .project-point {
-    background-color: #005cef;
+/*     background-color: #005cef; */
+    background-color: #FFF;
     width: 1rem;
     height: 1rem;
     border-radius: 50%;
@@ -666,7 +678,7 @@ span.dancing {
 }
 
 #contact input.primary-button:hover {
-    box-shadow: 0.3rem 0.3rem #005cef;
+    box-shadow: -0.2rem 0.2rem #005cef;
     /* box-shadow: 0.2rem 0.2rem #FFF; */
 }
 
