@@ -11,6 +11,10 @@ const setStylePropertiesOnElement = (element, stylePropertiesObj) => {
   }
 }
 
+/* set scroll-padding-top to scroll evrything to the bottom of the header */
+const headerHeight = document.getElementsByTagName('Header')[0].getBoundingClientRect().bottom;
+document.documentElement.style.setProperty('scroll-padding-top', headerHeight + 'px');
+
 
 /* banner */
 /* show fullname in banner when in view field */
@@ -76,7 +80,7 @@ const enabledPreviousButtonStyleProperties = {
 };
 
 const disabledButtonStyleProperties = {
-  '--top': '0', 
+/*   '--top': '0',  */
   '--cursor': 'normal',
   '--box-shadow': 'none'
 };
@@ -99,6 +103,26 @@ const setButtonStyle = button => {
   }
 }
 
+const disableOrEnableButtons = () => {
+
+  /* disable buttons when limits reached (first and last project) enabled buttons otherwise */
+  if (currentShownProject === 0) {
+    previousButton.disabled = true;
+    nextButton.disabled = false;
+  } else if (currentShownProject === totalNumberOfProjects-1) {
+    console.log('currenShownProject: 4');
+    nextButton.disabled = true;
+    previousButton.disabled = false;
+  } else {
+    previousButton.disabled = false;
+    nextButton.disabled = false;
+  }
+
+  /* update button styles according to disabled property */
+  setButtonStyle(previousButton);
+  setButtonStyle(nextButton);
+}
+
 /* set default styles. On page loading next-button is enabled and previous disabled by default */
 const nextButton = document.getElementById('next-button');
 const previousButton = document.getElementById('previous-button');
@@ -110,13 +134,9 @@ let currentShownProject = 0;
 
 const showNextOrPreviousProject = event => {
 
-  /* get project marker points (blue and red dots under project) */
-  const buttonContainerChildrens = document.getElementsByClassName('button-container')[0].children;
-  const buttonContainerChildrensArr = Array.from(buttonContainerChildrens);
-  const projectPoints = buttonContainerChildrensArr.filter(children => children.className === 'project-point');
-
-  /* color current project point to blue */
-  projectPoints[currentShownProject].style.backgroundColor = 'blue';
+  /* color current project point to white */
+  const projectPoints = document.getElementsByClassName('project-point');
+  projectPoints[currentShownProject].style.backgroundColor = '#FFF';
 
   /* hide current displayed project */
   projects[currentShownProject].style.display = 'none';
@@ -132,34 +152,37 @@ const showNextOrPreviousProject = event => {
 
   /* show new project */
   projects[currentShownProject].style.display = 'grid';
-  projects[currentShownProject].scrollIntoView({behavior: 'smooth'});
+  document.getElementById('projects').scrollIntoView();
 
-
-  /* disable buttons when limits reached (first and last project) enabled buttons otherwise and round the corner of project-container*/
-  if (currentShownProject === 0) {
-    projects[currentShownProject].style['border-radius'] = '1.25rem 1.25rem 0 1.25rem';
-    previousButton.disabled = true;
-  } else if (currentShownProject === totalNumberOfProjects-1) {
-    projects[currentShownProject].style['border-radius'] = '1.25rem 1.25rem 1.25rem 0';
-    nextButton.disabled = true;
-  } else {
-    projects[currentShownProject].style['border-radius'] = '1.25rem 1.25rem 0 0';
-    previousButton.disabled = false;
-    nextButton.disabled = false;
-  }
-
-  /* update button styles according to disabled property */
-  setButtonStyle(previousButton);
-  setButtonStyle(nextButton);
-
-  /* update project point (marker) to red */
-  projectPoints[currentShownProject].style.backgroundColor = 'red';
+  disableOrEnableButtons();
+  projectPoints[currentShownProject].style.backgroundColor = '#FF1F25';
 }
 
 const firstProjectLink = document.getElementById('first-project-link');
 nextButton.addEventListener('click', showNextOrPreviousProject);
 previousButton.addEventListener('click', showNextOrPreviousProject);
 firstProjectLink.addEventListener('click', showNextOrPreviousProject);
+
+
+const showClickedProject = event => {
+  projectPoints[currentShownProject].style.backgroundColor = '#FFF';
+  /* hide current displayed project */
+  projects[currentShownProject].style.display = 'none';
+
+  /* show clicked project */
+  currentShownProject =  Number(event.target.id.slice(-1));
+  projects[currentShownProject].style.display = 'grid';
+  document.getElementById('projects').scrollIntoView();
+
+  disableOrEnableButtons();
+  projectPoints[currentShownProject].style.backgroundColor = '#FF1F25';
+}
+
+
+const projectPoints = document.getElementsByClassName('project-point');
+const projectPointsArr = Array.from(projectPoints);
+projectPointsArr.forEach(projectPoint => projectPoint.addEventListener('click', showClickedProject));
+
 
 
 /* contact */
