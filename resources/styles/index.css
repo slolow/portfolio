@@ -1,4 +1,5 @@
 /*  universal-styles */
+
 html,
 body {
     font-size: 24px;
@@ -8,7 +9,6 @@ body {
     
     /* set scroll-padding-top to scroll evrything to the bottom of the header */
     scroll-padding-top: var(--scroll-padding-top);
-/*     scroll-margin-top: var(--scroll-margin-top); */
 }
 
 h1 {
@@ -16,8 +16,8 @@ h1 {
 }
 
 h2 {
-    font-size: 3.2rem;
-    margin-top: 0;
+    font-size: 10rem;
+    margin: 0 0 3rem 0;
 }
 
 h3 {
@@ -28,10 +28,6 @@ h4 {
     font-size: 1.15rem;
 }
 
-a:hover {
-    text-decoration: none;
-}
-
 .main-section {
     padding: 7.5vw;
     overflow: hidden;
@@ -40,7 +36,7 @@ a:hover {
 .primary-button {
     box-sizing: border-box;
     display: block;
-    width: 30%;
+/*     width: 30%; */
     border: solid 5px;
     border-radius: 20px;
     font-size: 1.33rem;
@@ -56,7 +52,6 @@ a:hover {
 .primary-button:hover {
     top: 0.1rem;
     cursor: pointer;
-/*     box-shadow: 0.3rem 0.3rem 0.25rem #000; */
 }
 
 .button-container {
@@ -70,7 +65,6 @@ a:hover {
 .arrow.down {
     position: relative;
     font-weight: 900;
-/*     font-size: 6.67rem; */
     font-size: 10rem;
     animation: upAndDown 1s linear 0s infinite alternate;
 }
@@ -84,36 +78,33 @@ a:hover {
     }
 }
 
-/*  header */
+/*  header and footer */
+
+header, footer {
+    background-color: #005cef;
+    color: #FFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.3% 2.5%;
+}
 
 header {
     box-sizing: border-box;
     position: fixed;
     width: 100%;
     z-index: 1;
-    /* background-color: #FFF; */
-    /* background-color: #ffdd18; */
-    background-color: #005cef;
-/*     background-color: #FF1F25; */
-/*     color: #000; */
-    display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.3% 2.5%;
 }
 
-header img {
-/*     height: 8vh; */
-    height: 6vh;
+.github-logo {
+    height: 2.5rem;
     transition: opacity 750ms;
     vertical-align: middle;
 }
 
-#github-logo:hover {
+.github-logo:hover {
     opacity: 0.5;
-/*     border-radius: 50%;
-    box-shadow: 0.3rem 0.15rem #FF1F25; */
 }
 
 header ul {
@@ -126,52 +117,33 @@ header ul li {
     margin: 0 5px;
 }
 
-header a {
-/*     color: #000; */
-/*     color: #FF1F25; */
-/*     color: #005cef; */
-/*     color: #ffdd18; */
+header a:not(.github-logo-link) {
     color: #FFF;
     text-decoration: none;
-/*     transition: color 400ms; */
-/*     transition: opacity 750ms; */
 }
 
 header a:hover {
-/*     color: #FF1F25; */
-/*     color: #ffdd18; */
-/*     opacity: 0.3; */
     text-shadow: -0.05rem 0.05rem #FF1F25;
 }
 
 /*  banner */
 #banner {
-/*     background-color: #FFF; */
-/*     background-color: #ffdd18; */
     background-color: #FF1F25;
 }
 
-#banner p {
-/*     font-size: 3.2rem; */
+#banner p:not(#banner p:first-child) {
     font-size: 5.2rem;
-    /* color: #000; */
-/*     color: #005cef; */
     color: #FFF;
 }
 
 #banner p:first-child {
-    /* color: #FF1F25; */
     font-size: 10rem;
     color: #ffdd18;
     text-shadow: -0.5rem 0.5rem #005cef;
-/*     margin-top: 3rem;
-    margin-bottom: 5rem; */
     margin: 5.5rem 0;
 }
 
 #banner .arrow.down {
-/*     color: #FF1F25; */
- /*    color: #ffdd18; */
  color: #FFF;
 }
 
@@ -180,12 +152,11 @@ header a:hover {
 }
 
 span.yellow {
-    color: yellow;
+    color: #ffdd18;
     text-shadow: -0.26rem 0.26rem #005cef;
 }
 
 span.dancing {
-/*     font-style: italic; */
     animation: dance 1s infinite ease-in-out alternate;
 }
 
@@ -304,43 +275,18 @@ span.dancing {
 /* projects */
 
 #projects {
-/*     background-color: #FF1F25; */
-/*     background-color: #ffdd18; */
     background-color: #FFF;
-/*     background-color: #ffdd18; */
-/*     color: #FFF; */
     color: #005cef;
-    /* color: #FFF; */
 }
 
-/* #projects h2, #projects h3, #projects h4 {
-    color: #05A3FF;
-} */
-
 #projects h2 {
-/*     margin-bottom: 6.67rem; */
     color: #FF1F25;
-/*     text-shadow: 0.16rem 0.16rem #005cef; */
     text-shadow: -0.5rem 0.5rem #005cef;
-/*     color: #003286; */
-/*     color: #005cef; */
-/*     text-decoration: underline wavy #005cef; */
-/*     text-decoration: underline wavy #FF1F25;
-    text-underline-offset: 1rem; */
-    margin-bottom: 3rem;
-    font-size: 10rem;
 }
 
 .project-container h3 {
-    margin: 1rem 0;
-/*     font-style: italic; */
-}
-
-.project-container h3, .project-container h4 {
-/*     color: #ffdd18; */
-/*     color: #003286; */
-/*     color: #005cef; */
     color: #FFF;
+    margin: 1rem 0;
 }
 
 .project-container h4 {
@@ -355,7 +301,6 @@ span.dancing {
 }
 
 .project-container {
-    max-width: 100%;
     display: grid;
     grid-template-areas: 'title title'
                          'description video'
@@ -363,41 +308,24 @@ span.dancing {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 4rem 1fr 1fr;
     grid-gap: 2rem 2rem;
-/*     background-color: rgba(0, 0, 0, 0.5); */
     background-color:#005cef;
-/*     background-color: #ffdd18; */
-/*     background-color: #FF1F25; */
-    border: 5px solid #005cef;
-/*     border: 5px dashed #FF1F25; */
-/*     color: #FFF;  */
-/*     color: #ffdd18; */
-/*     margin-bottom: 6.67rem; */
-/*     margin-bottom: 1rem; */
-    /* justify-items: start; */
+/*     border: 5px solid #005cef; */
     justify-items: stretch;
-/*     align-items: start; */
     align-items: stretch;
     padding: 1rem 2rem;
     border-radius: 1.25rem 1.25rem 0 0;
-/*     box-shadow: -1.25rem -1.25rem #ff1f25; */
-/*     border-radius: 5px; */
-/*     scroll-margin-top: 3.66275rem; */
-/*     scroll-margin-top: 5rem; */
 }
 
 .project-container > section, #projects iframe {
-    /* background-color: #FF1F25; */
-    /* background-color: #005cef; */
-    background-color: #FFF;
     border-radius: 1.25rem;
-/*     padding: 0 1rem; */
 }
 
 .project-container > section {
+    background-color: #FFF;
     padding: 1rem;
 }
 
-/* only show book-rating-app as default */
+/* show only book-rating-app as default */
 .project-container:not(#book-rating-project) {
     display: none;
 }
@@ -412,8 +340,6 @@ span.dancing {
 
 .project-video-container {
     grid-area: 2 / 2 / span 1 / span 1;
-    width: 100%;
-    height: 100%;
 }
 
 .project-tech-stack {
@@ -425,17 +351,13 @@ span.dancing {
 }
 
 .project-video-container iframe {
-/*     width: 90%;
-    height: 80%; */
     width: 100%;
     height: 100%;
-/*     border-radius: 0 1rem; */
 }
 
 .project-video-container.empty {
     overflow: hidden;
     background-color: #FFF;
-/*     background-color: #ffdd18; */
     border-radius: 1.25rem;
 }
 
@@ -447,26 +369,12 @@ span.dancing {
     transform: scaleX(-1);
 }
 
-/* .project-video-container.empty hr {
-    border: 5px solid #005cef;
-    position: relative;
-    top: -1rem;
-} */
-
 #projects a {
-/*     color: #05A3FF; */
-/*     color: #ffdd18; */
-/*     color: #921805; */
-/*     color: #6a0f01; */
-/*     color: #005cef; */
-/*     color: #003286; */
     color: #FF1F25;
     text-decoration: none;
-/*     transition: opacity 750ms; */
 }
 
 #projects a:hover {
-/*     opacity: 0.3; */
     text-decoration: underline;
 }
 
@@ -474,24 +382,15 @@ span.dancing {
     padding-bottom: 1rem;
 }
 
-#projects .primary-button {
-/*     background-color: #05A3FF;
-    border-color:  #05A3FF; */
-/*     background-color: #FF1F25;
-    border-color: #FF1F25; */
+.project-button {
+    font-family: 'Noto Sans', 'Helvetica', 'Arial', sans-serif;
     background-color: #005cef;
     border: none;
-/*     border-color: #005cef; */
-    /* color: #FFF; */
     color: #FFF;
-/*     color: #ffdd18; */
     font-size: 5rem;
     padding: 0;
     width: 20%;
-/*     transform: translateY(-25%); */
-/*     border-radius: 0; */
-/*     text-align: center; */
-/*     vertical-align: middle; */
+    transition: box-shadow 200ms;
 }
 
 #previous-button {
@@ -504,18 +403,18 @@ span.dancing {
 
 /* set variable as workaround to update hover pseudo class via javaSript */
 #previous-button:hover, #next-button:hover {
-/*     top: var(--top); */
-    top: 0;
     cursor: var(--cursor);
     box-shadow: var(--box-shadow);
 }
 
 .project-point {
-/*     background-color: #005cef; */
-    background-color: #FFF;
     width: 1rem;
     height: 1rem;
     border-radius: 50%;
+}
+
+.project-point:not(.project-point:first-of-type) {
+    background-color: #FFF;
 }
 
 .project-point:first-of-type {
@@ -532,11 +431,10 @@ span.dancing {
 #contact h2 {
     color: #FFF;
     background-color: #005cef;
+    font-size: 3.2rem;
     padding: 1rem;
+    margin-bottom: 7.5vw;
     text-align: center;
-/*     color: #005cef; */
-/*     color: #003286; */
-/*     color: #ffdd18; */
 }
 
 #contact h2 span  {
@@ -545,32 +443,18 @@ span.dancing {
 
 .flex-container {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
 }
 
 #contact form {
     display: inline-flex;
     flex-direction: column;
-/*     width: 45%; */
-/*     margin: 0 auto; */
-/*     display: grid;
-    grid-template-areas: 'fname msg'
-                         'lname msg'
-                         'email msg'
-                         'submit submit';
-    grid-template-columns: 1fr 2fr;
-    grid-gap: 1rem 1rem; */
 }
 
 #contact .i-love-to-code {
     display: inline-flex;
     flex-direction: column;
     padding: 0 15%;
-/*     width: 45%; */
-/*     margin-left: 5%;
-    position: relative;
-    top: 1rem; */
 }
 
 .i-love-to-code p {
@@ -585,30 +469,9 @@ span.dancing {
         color: #FF1F25;
     }
     100% {
-       /* color: #ffdd18; */
        color: #FFF;
     }
 }
-
-/* #contact .fname {
-    grid-area: 1 / 1 / span 1 / span 1;
-}
-
-#contact .lname {
-    grid-area: 2 / 1 / span 1 / span 1;
-}
-
-#contact .email {
-    grid-area: 3 / 1 / span 1 / span 1;
-}
-
-#contact .message {
-    grid-area: 1 / 2 / span 3 / span 1;
-}
-
-#contact-form-submit {
-    grid-area: 4 / 1 / span 1 / span 2;
-} */
 
 #contact input {
     margin: 1rem 0;
@@ -622,17 +485,8 @@ span.dancing {
     padding: 1rem;
     border: none;
     border-radius: 2px;
-/*     background-color: #FFF; */
-/*     background-color: #ffdd18; */
-    /* color: #005cef; */
-/*     color: #FFF;
-    background-color: #005cef; */
     color: #005cef;
     background-color: #FFF;
-}
-
-#contact label {
-/*     color: #ffdd18; */
 }
 
 /* change placeholder color for all browsers */
@@ -654,52 +508,17 @@ span.dancing {
 }
 
 #contact input:not(input.primary-button):focus-visible, #contact textarea:focus-visible {
-/*     outline: 3px solid #FF1F25; */
     outline: 3px solid #005cef;
     outline-offset: -0.25rem;
 }
 
 #contact input.primary-button {
-/*     border: 5px solid #FFF;
-    border-radius: 20px; */
-    /* background-color: #FF1F25; */
     background-color: #FFF;
     border-color: #FFF;
-/*     background-color: #005cef;
-    border-color: #005cef; */
-/*     background-color: #ffdd18;
-    border-color: #ffdd18; */
-/*     background-color: #005cef;
-    border-color: #005cef; */
-/*     color: #FFF; */
     color: #FF1F25;
-/*     color: #FFF; */
     width: 60%;
 }
 
 #contact input.primary-button:hover {
     box-shadow: -0.2rem 0.2rem #005cef;
-    /* box-shadow: 0.2rem 0.2rem #FFF; */
 }
-
-/* #contact input.primary-button:disabled, input.primary-button[disabled] {
-    opacity: 0.5;
-    cursor: not-allowed;
-    box-shadow: none;
-    top: 0;
-} */
-
-/* #thank-you-msg {
-    display: none;
-} */
-
-/* footer */
-footer {
-    background-color: #005cef;
-    color: #FFF;
-    padding: 1rem;
-}
-
-/* .copyright {
-    margin: 0 0 0 1rem;
-} */

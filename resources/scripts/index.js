@@ -1,4 +1,5 @@
 /* universal */
+
 /* delay function
 source: https://alvarotrigo.com/blog/wait-1-second-javascript/  */
 const delay = (milliseconds) =>
@@ -11,12 +12,13 @@ const setStylePropertiesOnElement = (element, stylePropertiesObj) => {
   }
 }
 
-/* set scroll-padding-top to scroll evrything to the bottom of the header */
+/* set scroll-padding-top to scroll everything to the bottom of the header */
 const headerHeight = document.getElementsByTagName('Header')[0].getBoundingClientRect().bottom;
 document.documentElement.style.setProperty('scroll-padding-top', headerHeight + 'px');
 
 
 /* banner */
+
 /* show fullname in banner when in view field */
 const myNameIs = async () => {
   const nameSpan = document.getElementById("full-name");
@@ -43,8 +45,9 @@ window.addEventListener('scroll', myNameIs);
 
 
 /* about-me */
+
 /*  show more-about-me or hide it */
-const showMoreOrLessAboutMe = event => {
+/* const showMoreOrLessAboutMe = event => {
   if (event.target.innerHTML === 'Show more') {
     const moreAboutMe = document.getElementById('more-about-me');
     moreAboutMe.style.display = 'block';
@@ -59,28 +62,26 @@ const showMoreOrLessAboutMe = event => {
 }
 
 const moreAboutMeBtn = document.getElementById('more-about-me-button');
-moreAboutMeBtn.addEventListener('click', showMoreOrLessAboutMe);
+moreAboutMeBtn.addEventListener('click', showMoreOrLessAboutMe); */
 
 
 /* projects */
+
 const projects = document.getElementsByClassName('project-container');
 const totalNumberOfProjects = 5; 
 
 /* set default hover properties and styles for enabled and disabled buttons*/
 const enabledNextButtonStyleProperties = {
-/*   '--top': '0.1rem',  */
   '--cursor': 'pointer', 
   '--box-shadow': '0.3rem 0.3rem #FF1F25'
 };
 
 const enabledPreviousButtonStyleProperties = {
-/*     '--top': '0.1rem',  */
     '--cursor': 'pointer', 
     '--box-shadow': '-0.3rem 0.3rem #FF1F25'
 };
 
 const disabledButtonStyleProperties = {
-/*   '--top': '0',  */
   '--cursor': 'normal',
   '--box-shadow': 'none'
 };

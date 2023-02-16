@@ -14,8 +14,7 @@
 </head>
 <body>
     <header>
-<!--         <a href="https://github.com/slolow" target="_blank"><img src="resources/images/github-mark/github-mark.svg" alt="github logo" id="github-logo"></a> -->
-        <a href="https://github.com/slolow" target="_blank" id="github-logo"><img src="resources/images/github-mark/github-mark-white.svg" alt="github logo"></a>
+        <a href="https://github.com/slolow" target="_blank" class="github-logo-link"><img src="resources/images/github-mark/github-mark-white.svg" alt="github logo" class="github-logo"></a>
         <nav>
             <ul>
                 <li><a href="#banner">home</a></li>
@@ -33,7 +32,6 @@
                 <p>Hi,</p>
                 <p class="name-paragraph">my name is <span class="yellow dancing">...</span></p>
                 <p class="name-paragraph">my name is <span class="yellow" id="full-name"></span></p>
-<!--                 <p class="name-paragraph">but you can call me <span class="yellow" id="full-name">Slo.</span></p> -->
                 <p>I'm a <span class="yellow">fullstack developer.</span></p>
                 <a href="#about-me"><span class="arrow down">&#8595;</span></a> 
         </section>
@@ -91,7 +89,6 @@
                     <p>This book rating app is part of the <a href="https://cs50.harvard.edu/web/2018/" target="_blank">CS50’s Web Programming with Python and JavaScript</a> course from Harvard University.</p> 
                 </section>
                 <div class="project-video-container">
-<!--                     <h4>Project-Video (no sound):</h4> -->
                     <iframe src="https://www.youtube.com/embed/6rESpya70nc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>   
                 <section class="project-tech-stack">
@@ -124,7 +121,6 @@
                     <p>This chat app is part of the <a href="https://cs50.harvard.edu/web/2018/" target="_blank">CS50’s Web Programming with Python and JavaScript</a> course from Harvard University.</p> 
                 </section>
                 <div class="project-video-container">
-                    <!-- <h4>Project-Video (no sound):</h4> -->
                     <iframe src="https://www.youtube.com/embed/IbtaYdm6HOw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>   
                 <section class="project-tech-stack">
@@ -157,7 +153,6 @@
                     <p>This dashboard shows the timeseries for various metrics in an fictive electrical grid. It's the first web app I've made. All timeseries are randomly generated.</p> 
                 </section>
                 <div class="project-video-container">
-                    <!-- <h4>Project-Video (no sound):</h4> -->
                     <iframe src="https://www.youtube.com/embed/m30xeWKA3Js" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>   
                 <section class="project-tech-stack">
@@ -186,7 +181,6 @@
                     <p>This is a simple cloud to upload files and create folders.</p> 
                 </section>
                 <div class="project-video-container">
-                    <!-- <h4>Project-Video (no sound):</h4> -->
                     <iframe src="https://www.youtube.com/embed/oixHn4sj0GY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>   
                 <section class="project-tech-stack">
@@ -240,18 +234,14 @@
 
             <!-- next and previous buttons -->
             <div class="button-container">
-                <!-- <button type="button" class="primary-button" id="previous-button" disabled>Previous Project</button> -->
-                <button type="button" class="primary-button" id="previous-button" disabled>&#8592;</button>
+                <button type="button" class="project-button" id="previous-button" disabled>&#8592;</button>
                 <div class="project-point" id="project-point-0"></div>
                 <div class="project-point" id="project-point-1"></div>
                 <div class="project-point" id="project-point-2"></div>
                 <div class="project-point" id="project-point-3"></div>
                 <div class="project-point" id="project-point-4"></div>
-                <!-- <button type="button" class="primary-button" id="next-button">Next Project</button> -->
-                <button type="button" class="primary-button" id="next-button">&#8594;</button>
+                <button type="button" class="project-button" id="next-button">&#8594;</button>
             </div>
-
-            <!-- <a href="https://github.com/slolow" target="_blank" class="primary-button">More Projects</a> -->
         </section>
 
         <!-- contact -->
@@ -304,6 +294,7 @@
 
         <footer>
             <p class="copyright">&copy Laszlo Starost 2023</p>
+            <a href="https://github.com/slolow" target="_blank" class="github-logo-link"><img src="resources/images/github-mark/github-mark-white.svg" alt="github logo" class="github-logo"></a>
         </footer>
     </main>
     
