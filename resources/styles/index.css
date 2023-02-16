@@ -11,10 +11,6 @@ body {
     scroll-padding-top: var(--scroll-padding-top);
 }
 
-h1 {
-    font-size: 6.67rem;
-}
-
 h2 {
     font-size: 10rem;
     margin: 0 0 3rem 0;
@@ -31,6 +27,11 @@ h4 {
 .main-section {
     padding: 7.5vw;
     overflow: hidden;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
 }
 
 .primary-button {
@@ -74,13 +75,14 @@ h4 {
         top: 0;
     }
     100% {
-        top: 5vh;
+        top: 1rem;
     }
 }
 
 /*  header and footer */
 
 header, footer {
+    box-sizing: border-box;
     background-color: #005cef;
     color: #FFF;
     display: flex;
@@ -90,7 +92,6 @@ header, footer {
 }
 
 header {
-    box-sizing: border-box;
     position: fixed;
     width: 100%;
     z-index: 1;
@@ -99,7 +100,7 @@ header {
 
 .github-logo {
     height: 2.5rem;
-    transition: opacity 750ms;
+    transition: opacity 200ms;
     vertical-align: middle;
 }
 
@@ -147,6 +148,7 @@ header a:hover {
  color: #FFF;
 }
 
+/* needed to remove underline from arrow.down */
 #banner a {
     text-decoration: none;
 }
@@ -290,7 +292,6 @@ span.dancing {
 }
 
 .project-container h4 {
-    color: #005cef;
     margin-top: 0;
     text-decoration: underline #005cef;
     text-underline-offset: 1rem;
@@ -309,14 +310,13 @@ span.dancing {
     grid-template-rows: 4rem 1fr 1fr;
     grid-gap: 2rem 2rem;
     background-color:#005cef;
-/*     border: 5px solid #005cef; */
     justify-items: stretch;
     align-items: stretch;
     padding: 1rem 2rem;
     border-radius: 1.25rem 1.25rem 0 0;
 }
 
-.project-container > section, #projects iframe {
+.project-container > section, .project-container iframe {
     border-radius: 1.25rem;
 }
 
@@ -362,8 +362,8 @@ span.dancing {
 }
 
 #totoro {
-    height: 200px;
-    width: 200px; /* change width to 400px to have two totoros walking side by side */
+    height: 8.33rem;
+    width: 8.33rem; /* change width to 400px to have two totoros walking side by side */
     margin: 10% auto;
     background-image: url("../images/todoro-miyazaki.gif");
     transform: scaleX(-1);
@@ -382,7 +382,7 @@ span.dancing {
     padding-bottom: 1rem;
 }
 
-.project-button {
+.carousel-button {
     font-family: 'Noto Sans', 'Helvetica', 'Arial', sans-serif;
     background-color: #005cef;
     border: none;
@@ -407,7 +407,7 @@ span.dancing {
     box-shadow: var(--box-shadow);
 }
 
-.project-point {
+.carousel-point {
     width: 1rem;
     height: 1rem;
     border-radius: 50%;
@@ -429,7 +429,6 @@ span.dancing {
 }
 
 #contact h2 {
-    color: #FFF;
     background-color: #005cef;
     font-size: 3.2rem;
     padding: 1rem;
@@ -441,19 +440,12 @@ span.dancing {
     text-shadow: -0.16rem 0.16rem #FF1F25;
 }
 
-.flex-container {
-    display: flex;
-    justify-content: space-between;
-}
-
-#contact form {
+#contact form, #contact .i-love-to-code {
     display: inline-flex;
     flex-direction: column;
 }
 
 #contact .i-love-to-code {
-    display: inline-flex;
-    flex-direction: column;
     padding: 0 15%;
 }
 
@@ -492,19 +484,17 @@ span.dancing {
 /* change placeholder color for all browsers */
 /* Chrome, Firefox, Opera, Safari 10.1+ */
 #contact input:not(input.primary-button)::placeholder, #contact textarea::placeholder { 
-    color: #FF1F25;
-    color: #FFF;
     color: #005cef;
 }
 
 /* Internet Explorer 10-11 */
 #contact input:not(input.primary-button):-ms-input-placeholder, #contact textarea:-ms-input-placeholder { 
-    color: #FF1F25;
+    color: #005cef;
 }
 
 /* Microsoft Edge */
 #contact input:not(input.primary-button)::-ms-input-placeholder, #contact textarea::-ms-input-placeholder {
-    color: #FF1F25;
+    color: #005cef;
 }
 
 #contact input:not(input.primary-button):focus-visible, #contact textarea:focus-visible {
