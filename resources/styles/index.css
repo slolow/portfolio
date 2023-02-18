@@ -61,6 +61,8 @@ h4 {
     align-items: center;
     background-color: #005cef;
     border-radius: 0 0 1.25rem 1.25rem;
+    margin-top: 0;
+    padding-left: 0;
 }
 
 .arrow.down {
