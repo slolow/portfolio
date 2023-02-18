@@ -445,6 +445,7 @@ span.dancing {
 #contact form, #contact .i-love-to-code {
     display: inline-flex;
     flex-direction: column;
+    justify-content: space-evenly;
 }
 
 #contact .i-love-to-code {
@@ -465,14 +466,6 @@ span.dancing {
     100% {
        color: #FFF;
     }
-}
-
-#contact input {
-    margin: 1rem 0;
-}
-
-#contact textarea {
-    margin-top: 1rem;
 }
 
 #contact input:not(input.primary-button), #contact textarea {
