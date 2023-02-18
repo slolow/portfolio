@@ -492,18 +492,40 @@ span.dancing {
     color: #005cef;
 }
 
-#contact input:not(input.primary-button):focus-visible, #contact textarea:focus-visible {
-    outline: 3px solid #005cef;
+/* change color of input outline depending on valid and invalid state of user input */
+
+input:focus-visible, textarea:focus-visible {
+    outline: 3px solid var(--input-outline-color);
     outline-offset: -0.25rem;
 }
 
-#contact input.primary-button {
+input:valid, textarea:valid {
+    --input-outline-color: #005cef;
+}
+
+input:invalid, textarea:invalid {
+    --input-outline-color: #FF1F25;
+}
+
+input.primary-button {
     background-color: #FFF;
+    opacity: 0.5;
     border-color: #FFF;
     color: #FF1F25;
     width: 60%;
 }
 
-#contact input.primary-button:hover {
+/*  remove hover functionality from input button as long as at least one form input is invalid */
+
+input.primary-button:hover {
+    top: 0;
+}
+
+form:valid [type="submit"] {
+    opacity: 1;
+}
+
+form:valid [type="submit"]:hover {
+    top: 0.1rem;
     box-shadow: -0.2rem 0.2rem #005cef;
 }

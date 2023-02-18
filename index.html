@@ -250,13 +250,13 @@
             <div class="flex-container">
                 <form action="https://formsubmit.co/266516a83c21c8595171f1c2d327d848" method="POST" id="contact-form">
                     <label for="fname">First name:</label>
-                    <input type="text" name="first&nbsp;name" placeholder="first name (optional)" id="fname" minlength="3" maxlength="50">
+                    <input type="text" name="first&nbsp;name" placeholder="first name" id="fname" minlength="3" maxlength="50" required>
                     <label for="lname">Last name:</label>
                     <input type="text" name="last&nbsp;name" placeholder="last name" id="lname" minlength="3" maxlength="50" required>
                     <label for="email">Email Adress:</label>
-                    <input type="email" name="email" placeholder="email" id="email" maxlength="256" required>
+                    <input type="email" name="email" placeholder="email" id="email" maxlength="256" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}" required>
                     <label for="message">Message:</label>
-                    <textarea name="message" cols="30" rows="10" placeholder="Your message" id="message" maxlength="5000" required></textarea>
+                    <textarea name="message" cols="30" rows="10" placeholder="Your message" id="message" minlength="3" maxlength="5000" required></textarea>
     
                     <!-- reroute the user to this page -->
                     <input type="hidden" name="_next" value="https://slolow.github.io/#thank-you-msg">
