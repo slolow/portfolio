@@ -472,8 +472,24 @@ span.dancing {
     padding: 1rem;
     border: none;
     border-radius: 2px;
-    color: #005cef;
     background-color: #FFF;
+    margin: 1rem 0;
+}
+
+/* needed to overwrite chromes style when autofill forms */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active, 
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover, 
+textarea:-webkit-autofill:focus, 
+textarea:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+}
+
+input:-webkit-autofill, textarea:-webkit-autofill {
+    -webkit-text-fill-color: var(--webkit-text-fill-color);
 }
 
 /* change placeholder color for all browsers */
@@ -500,13 +516,59 @@ input:focus-visible, textarea:focus-visible {
 }
 
 input:valid, textarea:valid {
+    color: #005cef;
     --input-outline-color: #005cef;
 }
 
 input:invalid, textarea:invalid {
+    color: #FF1F25;
     --input-outline-color: #FF1F25;
 }
 
+p.form-input-error {
+    display: none;
+/*     display: block; */
+    font-size: 0.7rem;
+    background-color: #FFF;
+    color: #FF1F25;
+    padding: 0.3rem;
+    text-align: center;
+    margin: 0 0 1rem 0;
+}
+
+p.form-input-error::before {
+    content: '⚠️ ';
+}
+
+p.form-input-error::after {
+    content: ' ⚠️';
+}
+
+/* display error message for invalid inputs when not placeholder text is shown
+error message paragraph is adjacent sibling of corresponding input 
+--> Adjacent sibling combinator "+"
+See: https://developer.mozilla.org/en-US/docs/Web/CSS/Adjacent_sibling_combinator */
+
+input:invalid:not(:focus-visible):not(:placeholder-shown) + p.form-input-error, textarea:invalid:not(:focus-visible):not(:placeholder-shown) + p.form-input-error {
+    display: block;
+}
+
+input:invalid:not(:focus-visible):not(:placeholder-shown), textarea:invalid:not(:focus-visible):not(:placeholder-shown) {
+    animation: shake 0.2s;
+}
+
+@keyframes shake {
+    0%, 100% {
+      transform: translateX(0);
+    } 
+    20%, 40%, 60%, 80% {
+      transform: translateX(-2%);
+    }
+    10%, 30%, 50%, 70%, 90% {
+      transform: translateX(2%);
+    }
+}
+  
 input.primary-button {
     background-color: #FFF;
     opacity: 0.5;
@@ -521,11 +583,11 @@ input.primary-button:hover {
     top: 0;
 }
 
-form:valid [type="submit"] {
+form:valid input.primary-button {
     opacity: 1;
 }
 
-form:valid [type="submit"]:hover {
+form:valid input.primary-button:hover {
     top: 0.1rem;
     box-shadow: -0.2rem 0.2rem #005cef;
 }

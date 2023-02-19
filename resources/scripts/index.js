@@ -188,14 +188,22 @@ projectPointsArr.forEach(projectPoint => projectPoint.addEventListener('click', 
 
 /* contact */
 
-/* enable button when form ready to submit */
+/* needed for styling of auto fill input. Can't be done only with css. pattern needed in html input
+minlength is not working for auto fill input
+see: https://stackoverflow.com/questions/60456590/css-autofill-and-validation */
 
-/* const contactSubmit = document.getElementById('contact-form-submit');
-contactSubmit.addEventListener('click', ) */
+const validateInput = event => {
 
-/* show thank you message after submit */
+  /* color text blue when valid otherwise red */
+  if (event.target.validity.valid) {
+    const colorProperty = {'--webkit-text-fill-color': '#005cef'};
+    setStylePropertiesOnElement(event.target, colorProperty);
+  } else {
+    const colorProperty = {'--webkit-text-fill-color': '#FF1F25'};
+    setStylePropertiesOnElement(event.target, colorProperty);
+  }
+}
 
-/* const showThankYouMsg = () => document.getElementById('sending-msg').style.display = 'block';
-
-const contactForm = document.getElementById('contact-form');
-contactForm.addEventListener('submit', showSendingMsg); */
+const formInputs = document.getElementsByClassName('form-input');
+const formInputsArr = Array.from(formInputs);
+formInputsArr.forEach(formInput => formInput.addEventListener('input', validateInput))
