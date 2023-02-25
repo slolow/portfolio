@@ -12,9 +12,16 @@ const setStylePropertiesOnElement = (element, stylePropertiesObj) => {
   }
 }
 
+const addEventListenerToHTMLCollection = (inputHTMLCollection, eventString, eventHandler) => { 
+  const arr = Array.from(inputHTMLCollection);
+  arr.forEach(element => element.addEventListener(eventString, eventHandler));
+  return arr;
+}
+
 /* set scroll-padding-top to scroll everything to the bottom of the header */
 const headerHeight = document.getElementsByTagName('Header')[0].getBoundingClientRect().bottom;
-document.documentElement.style.setProperty('scroll-padding-top', headerHeight + 'px');
+const scrollPaddingTop = headerHeight - 0.01*headerHeight; /* needed to work in chrome */
+document.documentElement.style.setProperty('scroll-padding-top', scrollPaddingTop + 'px');
 
 
 /* banner */
@@ -30,7 +37,7 @@ const myNameIs = async () => {
     window.removeEventListener('scroll', myNameIs);
 
     /* animation */
-    lyrics = ["What?", "Who?", "Chicka-chicka", "Laszlo."];
+    lyrics = ["What?", "Who?", "Chicka-chicka", "Slim...", "Laszlo."];
     for (lyric of lyrics) {
       nameSpan.innerHTML = lyric;
       await delay(1000);
@@ -43,32 +50,13 @@ const myNameIs = async () => {
 
 window.addEventListener('scroll', myNameIs);
 
+/* projects and about-me */
 
-/* about-me */
-
-/*  show more-about-me or hide it */
-/* const showMoreOrLessAboutMe = event => {
-  if (event.target.innerHTML === 'Show more') {
-    const moreAboutMe = document.getElementById('more-about-me');
-    moreAboutMe.style.display = 'block';
-    event.target.innerHTML = 'Show less';
-    moreAboutMe.scrollIntoView();
-  } 
-  else {
-    document.getElementById('more-about-me').style.display = 'none';
-    event.target.innerHTML = 'Show more';
-    document.getElementById('about-me').scrollIntoView();
-  }
+/* const projects = document.getElementsByClassName('project-container'); */
+totalOfCarouselItems = {
+  projects: 5,
+  'about-me-section': 3
 }
-
-const moreAboutMeBtn = document.getElementById('more-about-me-button');
-moreAboutMeBtn.addEventListener('click', showMoreOrLessAboutMe); */
-
-
-/* projects */
-
-const projects = document.getElementsByClassName('project-container');
-const totalNumberOfProjects = 5; 
 
 /* set default hover properties and styles for enabled and disabled buttons*/
 const enabledNextButtonStyleProperties = {
@@ -93,7 +81,7 @@ const setDisabledButtonStyle = button => {
 
 const setEnabledButtonStyle = button => {
   button.style.opacity = 1;
-  button.id === 'next-button' ? setStylePropertiesOnElement(button, enabledNextButtonStyleProperties) : setStylePropertiesOnElement(button, enabledPreviousButtonStyleProperties);
+  button.classList.contains('next-button') ? setStylePropertiesOnElement(button, enabledNextButtonStyleProperties) : setStylePropertiesOnElement(button, enabledPreviousButtonStyleProperties);
 }
 
 const setButtonStyle = button => {
@@ -104,86 +92,162 @@ const setButtonStyle = button => {
   }
 }
 
-const disableOrEnableButtons = () => {
-
-  /* disable buttons when limits reached (first and last project) enabled buttons otherwise */
-  if (currentShownProject === 0) {
-    previousButton.disabled = true;
-    nextButton.disabled = false;
-  } else if (currentShownProject === totalNumberOfProjects-1) {
-    console.log('currenShownProject: 4');
-    nextButton.disabled = true;
-    previousButton.disabled = false;
+const disableOrEnableButtons = (clickedButton, currentShownIndex) => {
+  let upperLimit;
+  let className;
+  if (clickedButton.classList.contains('project-button')) {
+    upperLimit = totalOfCarouselItems['projects'] - 1;
+    className = 'project-button';
   } else {
-    previousButton.disabled = false;
-    nextButton.disabled = false;
+    upperLimit = totalOfCarouselItems['about-me-section'] - 1;
+    className = 'about-me-button';
   }
 
-  /* update button styles according to disabled property */
-  setButtonStyle(previousButton);
-  setButtonStyle(nextButton);
+  /* always make sure previousButton is enable when next-button clicked to go on carousel element back and vice versa */
+  if (clickedButton.classList.contains('next-button')) {
+    const previousButton = document.getElementsByClassName(className + ' ' + 'previous-button')[0];
+    previousButton.disabled = false;
+    setButtonStyle(previousButton);
+
+    /* disable next-button when upperLimit reached */
+    if (currentShownIndex === upperLimit) {
+      clickedButton.disabled = true;
+      setButtonStyle(clickedButton);
+    }
+  } else {
+    const nextButton = document.getElementsByClassName(className + ' ' + 'next-button')[0];
+    nextButton.disabled = false;
+    setButtonStyle(nextButton);
+
+    /* disable previous-button when lowerLimit reached */
+    if (currentShownIndex === 0) {
+      clickedButton.disabled = true;
+      setButtonStyle(clickedButton);
+    }
+  }
 }
 
-/* set default styles. On page loading next-button is enabled and previous disabled by default */
-const nextButton = document.getElementById('next-button');
-const previousButton = document.getElementById('previous-button');
-setButtonStyle(nextButton);
-setButtonStyle(previousButton);
-
 /*  show next or previous project */
-let currentShownProject = 0;
+const currentShownIndices = {
+  projects: 0,
+  'about-me-section': 0
+}
 
-const showNextOrPreviousProject = event => {
+const showNextOrPreviousCarouselItem = event => {
 
-  /* color current project point to white */
-  const projectPoints = document.getElementsByClassName('project-point');
-  projectPoints[currentShownProject].style.backgroundColor = '#FFF';
-
-  /* hide current displayed project */
-  projects[currentShownProject].style.display = 'none';
-
-  /* show dahsboard project if event fired by first-link-project (in about-me section), next project if fired by next-button, previous button if fired by previous-button */
-  if (event.target.id === 'first-project-link') {
-    currentShownProject = 2;
-  } else if (event.target.id === 'next-button')  {
-    currentShownProject++;
+  /* find carousel items to update and set stylings for carousel indicator*/
+  let carouselIndicatorClassName,
+      carouselIndicatorInactiveBackgroundColor,
+      currentShownIndex, 
+      carouselItems;  
+  if (event.target.classList.contains('project-button')) {
+    carouselIndicatorClassName = 'project-indicator';
+    carouselIndicatorInactiveBackgroundColor = '#FFF';
+    currentShownIndex = currentShownIndices['projects'];
+    carouselItems = document.getElementsByClassName('project-container');    
   } else {
-    currentShownProject--;
+    carouselIndicatorClassName = 'about-me-indicator';
+    carouselIndicatorInactiveBackgroundColor = '#005cef';
+    currentShownIndex = currentShownIndices['about-me-section'];
+    carouselItems = document.getElementsByClassName('about-me-section');
   }
 
-  /* show new project */
-  projects[currentShownProject].style.display = 'grid';
-  document.getElementById('projects').scrollIntoView();
+  /* find corresponding carousel indicators to carousel items and style them  */
+  const carouselIndicator = document.getElementsByClassName(carouselIndicatorClassName);
+  carouselIndicator[currentShownIndex].style.backgroundColor = carouselIndicatorInactiveBackgroundColor;
 
-  disableOrEnableButtons();
-  projectPoints[currentShownProject].style.backgroundColor = '#FF1F25';
+  /* hide current displayed carousel item */
+  carouselItems[currentShownIndex].style.display = 'none';
+
+  /* show dahsboard project if event fired by first-link-project (in about-me section), next carousel item if fired by next-button, previous carousel item if fired by previous-button */
+  if (event.target.id === 'first-project-link') {
+    currentShownIndex = 2;
+  } else if (event.target.classList.contains('next-button'))  {
+    currentShownIndex++;
+  } else {
+    currentShownIndex--;
+  }
+
+  /* show new crousel item */
+  if (event.target.classList.contains('project-button')) {
+    carouselItems[currentShownIndex].style.display = 'grid';
+    document.getElementById('projects').scrollIntoView();
+    currentShownIndices['projects'] = currentShownIndex;
+  } else {
+    carouselItems[currentShownIndex].style.display = 'block';
+    document.getElementById('about-me').scrollIntoView();
+    currentShownIndices['about-me-section'] = currentShownIndex;
+  }
+
+  disableOrEnableButtons(event.target, currentShownIndex);
+  carouselIndicator[currentShownIndex].style.backgroundColor = '#FF1F25';
 }
 
 const firstProjectLink = document.getElementById('first-project-link');
-nextButton.addEventListener('click', showNextOrPreviousProject);
-previousButton.addEventListener('click', showNextOrPreviousProject);
-firstProjectLink.addEventListener('click', showNextOrPreviousProject);
+firstProjectLink.addEventListener('click', showNextOrPreviousCarouselItem);
+const carouselButtons = document.getElementsByClassName('carousel-button');
+const carouselButtonsArr = addEventListenerToHTMLCollection(carouselButtons, 'click', showNextOrPreviousCarouselItem);
+carouselButtonsArr.forEach(carouselButton => setButtonStyle(carouselButton));
 
 
-const showClickedProject = event => {
-  projectPoints[currentShownProject].style.backgroundColor = '#FFF';
-  /* hide current displayed project */
-  projects[currentShownProject].style.display = 'none';
+const showClickedCarouselItem = event => {
 
-  /* show clicked project */
-  currentShownProject =  Number(event.target.id.slice(-1));
-  projects[currentShownProject].style.display = 'grid';
-  document.getElementById('projects').scrollIntoView();
+  /* find carousel items to update and set stylings for carousel indicator */
+  let carouselIndicatorClassName,
+      carouselIndicatorInactiveBackgroundColor,
+      currentShownIndex,
+      newShownIndex,
+      carouselItems;
+  if (event.target.classList.contains('project-indicator')) {
+    carouselIndicatorClassName = 'project-indicator';
+    carouselIndicatorInactiveBackgroundColor = '#FFF';
+    currentShownIndex = currentShownIndices['projects'];
+    carouselItems = document.getElementsByClassName('project-container'); 
+  } else {
+    carouselIndicatorClassName = 'about-me-indicator';
+    carouselIndicatorInactiveBackgroundColor = '#005cef';
+    currentShownIndex = currentShownIndices['about-me-section'];
+    carouselItems = document.getElementsByClassName('about-me-section'); 
+  }
 
-  disableOrEnableButtons();
-  projectPoints[currentShownProject].style.backgroundColor = '#FF1F25';
+  /* get new index of clicked carousel item */
+  newShownIndex =  Number(event.target.id.slice(-1));
+
+  /*  do nothing when clicked carousel item is already shown */
+  if (newShownIndex !== currentShownIndex) {
+    const carouselIndicators = document.getElementsByClassName(carouselIndicatorClassName);
+    carouselIndicators[currentShownIndex].style.backgroundColor = carouselIndicatorInactiveBackgroundColor;
+  
+    /* hide current displayed project */
+    carouselItems[currentShownIndex].style.display = 'none';
+  
+    const classList = [];
+    if (event.target.classList.contains('project-indicator')) {
+      carouselItems[newShownIndex].style.display = 'grid';
+      document.getElementById('projects').scrollIntoView();
+      currentShownIndices['projects'] = newShownIndex;
+      classList.push('project-button');
+    } else {
+      carouselItems[newShownIndex].style.display = 'block';
+      document.getElementById('about-me').scrollIntoView();
+      currentShownIndices['about-me-section'] = newShownIndex;
+      classList.push('about-me-button');
+    }
+    
+    carouselIndicators[newShownIndex].style.backgroundColor = '#FF1F25';
+    
+    newShownIndex > currentShownIndex ? classList.push('next-button') : classList.push('previous-button');
+
+    /* get carouselButton to coresponding cliked carouselIndicator. callsList e.g. : ['project-button next-button]  */
+    const carouselButton = document.getElementsByClassName(classList.join(' '))[0];
+    disableOrEnableButtons(carouselButton, newShownIndex);
+  }
+  
 }
 
 
-const projectPoints = document.getElementsByClassName('project-point');
-const projectPointsArr = Array.from(projectPoints);
-projectPointsArr.forEach(projectPoint => projectPoint.addEventListener('click', showClickedProject));
-
+const carouselIndicators = document.getElementsByClassName('carousel-indicator');
+addEventListenerToHTMLCollection(carouselIndicators, 'click', showClickedCarouselItem);
 
 
 /* contact */
@@ -205,5 +269,4 @@ const validateInput = event => {
 }
 
 const formInputs = document.getElementsByClassName('form-input');
-const formInputsArr = Array.from(formInputs);
-formInputsArr.forEach(formInput => formInput.addEventListener('input', validateInput))
+addEventListenerToHTMLCollection(formInputs, 'input', validateInput);

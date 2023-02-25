@@ -38,43 +38,46 @@
 
         <!--  about me -->
         <section id="about-me" class="main-section">
-<!--             <h2>About me</h2> -->
-            <div class="about-me-grid-container">
-                <article>Since I build my <a href="#dashboard-project" id="first-project-link">first web app</a> in 2020 I'm spending a lot of my free time to learn about web development. Currently I'm following the <a href="https://join.codecademy.com/learn/paths/front-end-engineer-career-path-b/" target="_blank">Front-End Engineer Career Path</a> from Codecademy.
-                I also took more backend related courses like <a href="https://cs50.harvard.edu/web/2018/" target="_blank">CS50’s Web Programming with Python and JavaScript</a> from Harvard University.
-                You're invited to check some of my projects <a href="#projects">here</a>.
-                I'm searching for an opportunity to work in the field of web development to learn more about it.</article>
-                <img src="resources/images/slo.jpg" alt="foto-of-the-author">
-                <section id="more-about-me">
-                    <ul>
-                        <li>🎓 M.Sc. in electrical engineering</li>
-<!--                         <li>💻 Worked for <a href="https://www.sma.de/" target="_blank">SMA</a>, <a href="https://www.iee.fraunhofer.de/" target="_blank">Fraunhofer IEE</a>, <a href="https://www.htw-berlin.de/" target="_blank">HTW</a> as a student</li> -->
-                        <li>💻 Worked for <a href="https://www.sma.de/" target="_blank">SMA</a>, <a href="https://www.iee.fraunhofer.de/" target="_blank">Fraunhofer IEE</a>, <a href="https://www.htw-berlin.de/" target="_blank">HTW</a></li>
-                        <li>🏙️ Live in Berlin</li>
-                        <li>🗣️ Speak german, french, english</li>
-                        <li>⚽ Love to play football</li>
-                        <li>🎼 Listen to a lot of music</li>
-                        <li>📽️ Love the cinema</li>
-                        <li>🍳 Like cooking and love eating</li>
-                        <li>⌨️ Love to code (コードを書くのが大好き)</li>
-                        <li>🙏 kind, respectful and polite person</li>
-                    </ul>
+            <h2>About me</h2>
+            <div id="about-me-container" class="flex-container">
+                <section id="about-me-section">
+                    <section id="about-me-desc" class="about-me-section carousel-item">
+                        <article>Since I build my <a href="#dashboard-project" id="first-project-link" class="project-button">first web app</a> in 2020 I'm spending a lot of my free time to learn about 
+                            web development. Currently I'm following the <a href="https://join.codecademy.com/learn/paths/front-end-engineer-career-path-b/" target="_blank">
+                            Front-End Engineer Career Path</a> from Codecademy. I also took more backend related courses like 
+                            <a href="https://cs50.harvard.edu/web/2018/" target="_blank">CS50’s Web Programming with Python and JavaScript</a> from Harvard University.
+                            You're invited to check some of my projects <a href="#projects">here</a>.
+                            I'm searching for an opportunity to work in the field of web development to learn more about it.</article>
+                    </section>
+                    <section id="about-me-list" class="about-me-section carousel-item">
+                        <ul>
+                            <li>🎓 I have a M.Sc. degree in electrical engineering</li>
+                            <li>💻 I worked for <a href="https://www.sma.de/" target="_blank">SMA</a>, <a href="https://www.iee.fraunhofer.de/" target="_blank">Fraunhofer IEE</a> and <a href="https://www.htw-berlin.de/" target="_blank">HTW</a> as a student</li>
+                            <li>🏙️ I'm living in Berlin</li>
+                            <li>🗣️ I speak german, french and english</li>
+                            <li>⚽ I love to play football</li>
+                            <li>🎼 I listen to a lot of music</li>
+                            <li>📽️ I like to go to the cinema</li>
+                            <li>🍳 I like cooking and I love eating</li>
+                            <li>🙏 I'm a kind, respectful and polite person</li>
+                        </ul>
+                    </section>
+        
+                    <section id="about-me-pic" class="about-me-section carousel-item">
+                        <img src="resources/images/slo.jpg" alt="foto-of-the-author">
+                    </section>
+    
+                    <!-- next and previous buttons -->
+                    <menu class="button-container">
+                        <button type="button" class="carousel-button previous-button about-me-button" disabled>&#8592;</button>
+                        <div class="carousel-indicator about-me-indicator" id="about-me-indicator-0"></div>
+                        <div class="carousel-indicator about-me-indicator" id="about-me-indicator-1"></div>
+                        <div class="carousel-indicator about-me-indicator" id="about-me-indicator-2"></div>
+                        <button type="button" class="carousel-button next-button about-me-button">&#8594;</button>
+                    </menu>
                 </section>
+                <div id="about-me-styles"></div>
             </div>
-<!--             <section id="more-about-me">
-                <ul>
-                    <li>🎓 M.Sc. in electrical engineering</li>
-                    <li>💻 Worked for <a href="https://www.sma.de/" target="_blank">SMA</a>, <a href="https://www.iee.fraunhofer.de/" target="_blank">Fraunhofer IEE</a>, <a href="https://www.htw-berlin.de/" target="_blank">HTW</a> as a student</li>
-                    <li>🏙️ Live in Berlin</li>
-                    <li>🗣️ Speak german, french, english</li>
-                    <li>⚽ Love to play football</li>
-                    <li>🎼 Listen to a lot of music</li>
-                    <li>📽️ Love the cinema</li>
-                    <li>🍳 Like cooking and love eating</li>
-                    <li>🙏 kind, respectful and polite person</li>
-                </ul>
-            </section> -->
-            <a href="#more-about-me" class="primary-button" id="more-about-me-button">Show more</a>
         </section>
 
         <!-- projects -->
@@ -82,7 +85,7 @@
             <h2>Projects</h2>
 
             <!-- book-rating-app -->
-            <div class="project-container" id="book-rating-project">
+            <div class="project-container carousel-item" id="book-rating-project">
                 <h3 class="project-title">1. Book Review App</h3>
                 <section class="project-description">
                     <h4>Description:</h4>
@@ -114,7 +117,7 @@
             </div>
 
             <!-- chat-app -->
-            <div class="project-container">
+            <div class="project-container carousel-item">
                 <h3 class="project-title">2. Chat App</h3>
                 <section class="project-description">
                     <h4>Description:</h4>
@@ -146,7 +149,7 @@
             </div>
 
             <!-- Dashboard electrical network -->
-            <div class="project-container" id="dashboard-project">
+            <div class="project-container carousel-item" id="dashboard-project">
                 <h3 class="project-title">3. Dashboard</h3>
                 <section class="project-description">
                     <h4>Description:</h4>
@@ -174,7 +177,7 @@
             </div>
 
             <!-- Cloud -->
-            <div class="project-container">
+            <div class="project-container carousel-item">
                 <h3 class="project-title">4. Minimal cloud</h3>
                 <section class="project-description">
                     <h4>Description:</h4>
@@ -203,7 +206,7 @@
             </div>
 
             <!-- portfolio -->
-            <div class="project-container">
+            <div class="project-container carousel-item">
                 <h3 class="project-title">5. Portfolio</h3>
                 <section class="project-description">
                     <h4>Description:</h4>
@@ -234,13 +237,13 @@
 
             <!-- next and previous buttons -->
             <menu class="button-container">
-                <button type="button" class="carousel-button" id="previous-button" disabled>&#8592;</button>
-                <div class="carousel-point project-point" id="project-point-0"></div>
-                <div class="carousel-point project-point" id="project-point-1"></div>
-                <div class="carousel-point project-point" id="project-point-2"></div>
-                <div class="carousel-point project-point" id="project-point-3"></div>
-                <div class="carousel-point project-point" id="project-point-4"></div>
-                <button type="button" class="carousel-button" id="next-button">&#8594;</button>
+                <button type="button" class="carousel-button previous-button project-button" disabled>&#8592;</button>
+                <div class="carousel-indicator project-indicator" id="project-indicator-0"></div>
+                <div class="carousel-indicator project-indicator" id="project-indicator-1"></div>
+                <div class="carousel-indicator project-indicator" id="project-indicator-2"></div>
+                <div class="carousel-indicator project-indicator" id="project-indicator-3"></div>
+                <div class="carousel-indicator project-indicator" id="project-indicator-4"></div>
+                <button type="button" class="carousel-button next-button project-button">&#8594;</button>
             </menu>
         </section>
 
