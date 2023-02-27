@@ -279,3 +279,5 @@ const validateInput = event => {
 
 const formInputs = document.getElementsByClassName('form-input');
 addEventListenerToHTMLCollection(formInputs, 'input', validateInput);
+
+console.log(document.referrer);
