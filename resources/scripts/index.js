@@ -1,4 +1,6 @@
-/* universal */
+/* 1. UNIVERSAL */
+
+/* functions */
 
 /* delay function
 source: https://alvarotrigo.com/blog/wait-1-second-javascript/  */
@@ -18,13 +20,17 @@ const addEventListenerToHTMLCollection = (inputHTMLCollection, eventString, even
   return arr;
 }
 
+/* function calls */
+
 /* set scroll-padding-top to scroll everything to the bottom of the header */
 const headerHeight = document.getElementsByTagName('Header')[0].getBoundingClientRect().bottom;
 const scrollPaddingTop = headerHeight - 0.01*headerHeight; /* needed to work in chrome */
 document.documentElement.style.setProperty('scroll-padding-top', scrollPaddingTop + 'px');
 
 
-/* banner */
+/* 2. BANNER */
+
+/* functions */
 
 /* show fullname in banner when in view field */
 const myNameIs = async () => {
@@ -48,11 +54,16 @@ const myNameIs = async () => {
   }
 };
 
+/* function calls */
 window.addEventListener('scroll', myNameIs);
 
-/* projects and about-me */
 
-/* const projects = document.getElementsByClassName('project-container'); */
+/* 3. PROJECTS AND ABOUT-ME */
+
+/* 3.A BUTTONS */
+
+/* objects */
+
 totalOfCarouselItems = {
   projects: 5,
   'about-me-section': 3
@@ -73,6 +84,8 @@ const disabledButtonStyleProperties = {
   '--cursor': 'normal',
   '--box-shadow': 'none'
 };
+
+/* functions */
 
 const setDisabledButtonStyle = button => {
   setStylePropertiesOnElement(button, disabledButtonStyleProperties);
@@ -127,11 +140,17 @@ const disableOrEnableButtons = (clickedButton, currentShownIndex) => {
   }
 }
 
+/* 3.B CAROUSEL */
+
+/* objects */
+
 /*  show next or previous project */
 const currentShownIndices = {
   projects: 0,
   'about-me-section': 0
 }
+
+/* functions */
 
 const setCarouselStyles = (className) => {
 
@@ -157,7 +176,6 @@ const setCarouselStyles = (className) => {
          carouselItems];
 }
 
-
 const setCarouselIndicatorStyles = (carouselIndicatorClassName, carouselIndicatorInactiveBackgroundColor, currentIndex, newIndex) => {
 
   /* find corresponding carousel indicators to carousel items and style them  */
@@ -165,7 +183,6 @@ const setCarouselIndicatorStyles = (carouselIndicatorClassName, carouselIndicato
   carouselIndicator[currentIndex].style.backgroundColor = carouselIndicatorInactiveBackgroundColor;
   carouselIndicator[newIndex].style.backgroundColor = '#FF1F25';
 }
-
 
 const showNewCarouselItem = (className, carouselItems, index) => {
   if (className.includes('project')) {
@@ -178,7 +195,6 @@ const showNewCarouselItem = (className, carouselItems, index) => {
     currentShownIndices['about-me-section'] = index;
   }
 }
-
 
 const showNextOrPreviousCarouselItem = event => {
   let [carouselIndicatorClassName, 
@@ -200,13 +216,6 @@ const showNextOrPreviousCarouselItem = event => {
   showNewCarouselItem(event.target.className, carouselItems, newIndex);
   disableOrEnableButtons(event.target, newIndex);
 }
-
-const firstProjectLink = document.getElementById('first-project-link');
-firstProjectLink.addEventListener('click', showNextOrPreviousCarouselItem);
-const carouselButtons = document.getElementsByClassName('carousel-button');
-const carouselButtonsArr = addEventListenerToHTMLCollection(carouselButtons, 'click', showNextOrPreviousCarouselItem);
-carouselButtonsArr.forEach(carouselButton => setButtonStyle(carouselButton));
-
 
 const showClickedCarouselItem = event => {
   let [carouselIndicatorClassName, 
@@ -235,7 +244,13 @@ const showClickedCarouselItem = event => {
   
 }
 
+/*  function calls */
 
+const firstProjectLink = document.getElementById('first-project-link');
+firstProjectLink.addEventListener('click', showNextOrPreviousCarouselItem);
+const carouselButtons = document.getElementsByClassName('carousel-button');
+const carouselButtonsArr = addEventListenerToHTMLCollection(carouselButtons, 'click', showNextOrPreviousCarouselItem);
+carouselButtonsArr.forEach(carouselButton => setButtonStyle(carouselButton));
 const carouselIndicators = document.getElementsByClassName('carousel-indicator');
 addEventListenerToHTMLCollection(carouselIndicators, 'click', showClickedCarouselItem);
 
@@ -246,17 +261,21 @@ addEventListenerToHTMLCollection(carouselIndicators, 'click', showClickedCarouse
 minlength is not working for auto fill input
 see: https://stackoverflow.com/questions/60456590/css-autofill-and-validation */
 
+/* functions */
+
 const validateInput = event => {
 
   /* color text blue when valid otherwise red */
+  let colorProperty;
   if (event.target.validity.valid) {
-    const colorProperty = {'--webkit-text-fill-color': '#005cef'};
-    setStylePropertiesOnElement(event.target, colorProperty);
+    colorProperty = {'--webkit-text-fill-color': '#005cef'};
   } else {
-    const colorProperty = {'--webkit-text-fill-color': '#FF1F25'};
-    setStylePropertiesOnElement(event.target, colorProperty);
+    colorProperty = {'--webkit-text-fill-color': '#FF1F25'};
   }
+  setStylePropertiesOnElement(event.target, colorProperty);
 }
+
+ /* function calls */
 
 const formInputs = document.getElementsByClassName('form-input');
 addEventListenerToHTMLCollection(formInputs, 'input', validateInput);
