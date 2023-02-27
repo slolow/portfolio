@@ -21,7 +21,7 @@ h3 {
 }
 
 h4 {
-    font-size: 1.15rem;
+    font-size: 1.25rem;
 }
 
 .main-section {
@@ -40,7 +40,7 @@ h4 {
 /*     width: 30%; */
     border: solid 5px;
     border-radius: 20px;
-    font-size: 1.33rem;
+    font-size: 1.25rem;
     font-family: 'Noto Sans', 'Helvetica', 'Arial', sans-serif;
     font-weight: 700;
     text-transform: uppercase;
@@ -162,7 +162,7 @@ header a:hover {
 }
 
 #banner p:not(#banner p:first-child) {
-    font-size: 5.2rem;
+    font-size: 5rem;
     color: #FFF;
 }
 
@@ -184,7 +184,7 @@ header a:hover {
 
 span.yellow {
     color: #ffdd18;
-    text-shadow: -0.26rem 0.26rem #005cef;
+    text-shadow: -0.25rem 0.25rem #005cef;
 }
 
 span.dancing {
@@ -398,16 +398,16 @@ span.dancing {
     color: #FFF;
 }
 
-#contact h2 {
+#contact h2, .thank-you-message {
     background-color: #005cef;
-    font-size: 3.2rem;
+    font-size: 2.5rem;
     padding: 1rem;
     margin-bottom: 7.5vw;
     text-align: center;
 }
 
-#contact h2 span  {
-    text-shadow: -0.16rem 0.16rem #FF1F25;
+#contact h2 span, .text-shadow-highlighted-text  {
+    text-shadow: -0.125rem 0.125rem #FF1F25;
 }
 
 #contact form, #contact .i-love-to-code {
@@ -422,7 +422,7 @@ span.dancing {
 
 .i-love-to-code p {
     margin: 0;
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 900;
     animation: blink 1s ease-out infinite alternate;
 }
@@ -495,8 +495,6 @@ input:invalid, textarea:invalid {
 
 p.form-input-error {
     display: none;
-/*     display: block; */
-    font-size: 0.7rem;
     background-color: #FFF;
     color: #FF1F25;
     padding: 0.3rem;
@@ -557,9 +555,10 @@ form:valid input.primary-button {
 
 form:valid input.primary-button:hover {
     top: 0.1rem;
-    box-shadow: -0.2rem 0.2rem #005cef;
+    box-shadow: -0.188rem 0.188rem #005cef;
 }
 
 .thank-you-message {
     display: none;
+    margin-bottom: 0;
 }
