@@ -133,54 +133,72 @@ const currentShownIndices = {
   'about-me-section': 0
 }
 
-const showNextOrPreviousCarouselItem = event => {
+const setCarouselStyles = (className) => {
 
-  /* find carousel items to update and set stylings for carousel indicator*/
+  /* find carousel items to update and set stylings for carousel indicator */
   let carouselIndicatorClassName,
-      carouselIndicatorInactiveBackgroundColor,
-      currentShownIndex, 
-      carouselItems;  
-  if (event.target.classList.contains('project-button')) {
+  carouselIndicatorInactiveBackgroundColor,
+  currentShownIndex, 
+  carouselItems; 
+  if (className.includes('project')) {
     carouselIndicatorClassName = 'project-indicator';
     carouselIndicatorInactiveBackgroundColor = '#FFF';
     currentShownIndex = currentShownIndices['projects'];
-    carouselItems = document.getElementsByClassName('project-container');    
+    carouselItems = document.getElementsByClassName('project-container'); 
   } else {
     carouselIndicatorClassName = 'about-me-indicator';
     carouselIndicatorInactiveBackgroundColor = '#005cef';
     currentShownIndex = currentShownIndices['about-me-section'];
     carouselItems = document.getElementsByClassName('about-me-section');
   }
+  return [carouselIndicatorClassName, 
+         carouselIndicatorInactiveBackgroundColor, 
+         currentShownIndex, 
+         carouselItems];
+}
+
+
+const setCarouselIndicatorStyles = (carouselIndicatorClassName, carouselIndicatorInactiveBackgroundColor, currentIndex, newIndex) => {
 
   /* find corresponding carousel indicators to carousel items and style them  */
   const carouselIndicator = document.getElementsByClassName(carouselIndicatorClassName);
-  carouselIndicator[currentShownIndex].style.backgroundColor = carouselIndicatorInactiveBackgroundColor;
+  carouselIndicator[currentIndex].style.backgroundColor = carouselIndicatorInactiveBackgroundColor;
+  carouselIndicator[newIndex].style.backgroundColor = '#FF1F25';
+}
 
-  /* hide current displayed carousel item */
-  carouselItems[currentShownIndex].style.display = 'none';
+
+const showNewCarouselItem = (className, carouselItems, index) => {
+  if (className.includes('project')) {
+    carouselItems[index].style.display = 'grid';
+    document.getElementById('projects').scrollIntoView();
+    currentShownIndices['projects'] = index;
+  } else {
+    carouselItems[index].style.display = 'block';
+    document.getElementById('about-me').scrollIntoView();
+    currentShownIndices['about-me-section'] = index;
+  }
+}
+
+
+const showNextOrPreviousCarouselItem = event => {
+  let [carouselIndicatorClassName, 
+       carouselIndicatorInactiveBackgroundColor,
+       currentShownIndex,
+       carouselItems] = setCarouselStyles(event.target.className);
 
   /* show dahsboard project if event fired by first-link-project (in about-me section), next carousel item if fired by next-button, previous carousel item if fired by previous-button */
   if (event.target.id === 'first-project-link') {
-    currentShownIndex = 2;
+    newIndex = 2;
   } else if (event.target.classList.contains('next-button'))  {
-    currentShownIndex++;
+    newIndex = currentShownIndex + 1;
   } else {
-    currentShownIndex--;
+    newIndex = currentShownIndex - 1;
   }
 
-  /* show new crousel item */
-  if (event.target.classList.contains('project-button')) {
-    carouselItems[currentShownIndex].style.display = 'grid';
-    document.getElementById('projects').scrollIntoView();
-    currentShownIndices['projects'] = currentShownIndex;
-  } else {
-    carouselItems[currentShownIndex].style.display = 'block';
-    document.getElementById('about-me').scrollIntoView();
-    currentShownIndices['about-me-section'] = currentShownIndex;
-  }
-
-  disableOrEnableButtons(event.target, currentShownIndex);
-  carouselIndicator[currentShownIndex].style.backgroundColor = '#FF1F25';
+  setCarouselIndicatorStyles(carouselIndicatorClassName, carouselIndicatorInactiveBackgroundColor, currentShownIndex, newIndex);
+  carouselItems[currentShownIndex].style.display = 'none';
+  showNewCarouselItem(event.target.className, carouselItems, newIndex);
+  disableOrEnableButtons(event.target, newIndex);
 }
 
 const firstProjectLink = document.getElementById('first-project-link');
@@ -191,56 +209,28 @@ carouselButtonsArr.forEach(carouselButton => setButtonStyle(carouselButton));
 
 
 const showClickedCarouselItem = event => {
-
-  /* find carousel items to update and set stylings for carousel indicator */
-  let carouselIndicatorClassName,
-      carouselIndicatorInactiveBackgroundColor,
-      currentShownIndex,
-      newShownIndex,
-      carouselItems;
-  if (event.target.classList.contains('project-indicator')) {
-    carouselIndicatorClassName = 'project-indicator';
-    carouselIndicatorInactiveBackgroundColor = '#FFF';
-    currentShownIndex = currentShownIndices['projects'];
-    carouselItems = document.getElementsByClassName('project-container'); 
-  } else {
-    carouselIndicatorClassName = 'about-me-indicator';
-    carouselIndicatorInactiveBackgroundColor = '#005cef';
-    currentShownIndex = currentShownIndices['about-me-section'];
-    carouselItems = document.getElementsByClassName('about-me-section'); 
-  }
+  let [carouselIndicatorClassName, 
+    carouselIndicatorInactiveBackgroundColor,
+    currentShownIndex,
+    carouselItems] = setCarouselStyles(event.target.className);
 
   /* get new index of clicked carousel item */
-  newShownIndex =  Number(event.target.id.slice(-1));
+  let newIndex =  Number(event.target.id.slice(-1));
 
   /*  do nothing when clicked carousel item is already shown */
-  if (newShownIndex !== currentShownIndex) {
-    const carouselIndicators = document.getElementsByClassName(carouselIndicatorClassName);
-    carouselIndicators[currentShownIndex].style.backgroundColor = carouselIndicatorInactiveBackgroundColor;
-  
-    /* hide current displayed project */
+  if (newIndex !== currentShownIndex) {
+    setCarouselIndicatorStyles(carouselIndicatorClassName, carouselIndicatorInactiveBackgroundColor, currentShownIndex, newIndex);
     carouselItems[currentShownIndex].style.display = 'none';
-  
+    showNewCarouselItem(event.target.className, carouselItems, newIndex);
+    
+    /* simulate a carousel-button to update disabled propertie of real carousel-buttons */
     const classList = [];
-    if (event.target.classList.contains('project-indicator')) {
-      carouselItems[newShownIndex].style.display = 'grid';
-      document.getElementById('projects').scrollIntoView();
-      currentShownIndices['projects'] = newShownIndex;
-      classList.push('project-button');
-    } else {
-      carouselItems[newShownIndex].style.display = 'block';
-      document.getElementById('about-me').scrollIntoView();
-      currentShownIndices['about-me-section'] = newShownIndex;
-      classList.push('about-me-button');
-    }
-    
-    carouselIndicators[newShownIndex].style.backgroundColor = '#FF1F25';
-    
-    newShownIndex > currentShownIndex ? classList.push('next-button') : classList.push('previous-button');
+    event.target.classList.contains('project-indicator') ? classList.push('project-button') : classList.push('about-me-button');
+    newIndex > currentShownIndex ? classList.push('next-button') : classList.push('previous-button');
 
     /* get carouselButton to coresponding cliked carouselIndicator. callsList e.g. : ['project-button next-button]  */
     const carouselButton = document.getElementsByClassName(classList.join(' '))[0];
-    disableOrEnableButtons(carouselButton, newShownIndex);
+    disableOrEnableButtons(carouselButton, newIndex);
   }
   
 }
