@@ -280,4 +280,9 @@ const validateInput = event => {
 const formInputs = document.getElementsByClassName('form-input');
 addEventListenerToHTMLCollection(formInputs, 'input', validateInput);
 
-console.log(document.referrer);
+/* if page is redirected from formsubmit show thank you Message */
+if (document.referrer === 'https://formsubmit.co/') {
+  const thankYouMsg = document.querySelector('.thank-you-message');
+  thankYouMsg.style.display = 'block';
+  thankYouMsg.scrollIntoView();
+}

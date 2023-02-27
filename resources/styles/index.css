@@ -559,3 +559,7 @@ form:valid input.primary-button:hover {
     top: 0.1rem;
     box-shadow: -0.2rem 0.2rem #005cef;
 }
+
+.thank-you-message {
+    display: none;
+}
