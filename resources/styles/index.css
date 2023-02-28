@@ -12,7 +12,7 @@ body {
 }
 
 h2 {
-    font-size: 10rem;
+    font-size: 5rem;
     margin: 0 0 3rem 0;
 }
 
@@ -21,7 +21,7 @@ h3 {
 }
 
 h4 {
-    font-size: 1.25rem;
+    font-size: 1rem;
 }
 
 .main-section {
@@ -208,7 +208,7 @@ span.dancing {
 
 #about-me h2 {
     color: #FFF;
-    text-shadow: -0.5rem 0.5rem #FF1F25;
+    text-shadow: -0.25rem 0.25rem #FF1F25;
 }
 
 
@@ -285,7 +285,7 @@ span.dancing {
 
 #projects h2 {
     color: #FF1F25;
-    text-shadow: -0.5rem 0.5rem #005cef;
+    text-shadow: -0.25rem 0.25rem #005cef;
 }
 
 .project-container h3 {
