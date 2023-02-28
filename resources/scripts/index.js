@@ -62,6 +62,15 @@ const myNameIs = async () => {
 /* function calls */
 window.addEventListener('scroll', myNameIs);
 
+/* const nameSpan = document.getElementById("full-name");
+const nameSpanObserverOptions = {
+  root: null, 
+  rootMargin: "0px",
+  threshold: 0
+}
+const nameSpanObserver = new IntersectionObserver(myNameIs, nameSpanObserverOptions);
+nameSpanObserver.observe(nameSpan); */
+
 
 /* 3. PROJECTS AND ABOUT-ME */
 
@@ -222,10 +231,7 @@ const showNextOrPreviousCarouselItem = event => {
   disableOrEnableButtons(event.target, newIndex);
 
   if (event.target.classList.contains('about-me-button')) {
-    setAboutMeStyleSectionHeight();
-    setAboutMeStyleSectionMaxHeight();
-    setAboutMeStyleSectionMinHeight();
-    setAboutMeStyleSectionBackgroundColor();
+    setAboutMeStyleSectionStyles();
   }
 }
 
@@ -254,10 +260,7 @@ const showClickedCarouselItem = event => {
     disableOrEnableButtons(carouselButton, newIndex);
 
     if (event.target.classList.contains('about-me-indicator')) {
-      setAboutMeStyleSectionHeight();
-      setAboutMeStyleSectionMaxHeight();
-      setAboutMeStyleSectionMinHeight();
-      setAboutMeStyleSectionBackgroundColor();
+      setAboutMeStyleSectionStyles();
     }
   }
   
@@ -278,21 +281,22 @@ addEventListenerToHTMLCollection(carouselIndicators, 'click', showClickedCarouse
 /* functions */
 
 const setAboutMeStyleSectionMaxHeight = () => {
-  const aboutMeContainerMaxHeight = aboutMeContainer.getBoundingClientRect().height;
+  const aboutMeContainerMaxHeight = calcAboutMeContainerMaxHeight();
   document.getElementById('about-me-style-section').style.setProperty('--about-me-style-section-max-height', aboutMeContainerMaxHeight + 'px');
 }
 
 const setAboutMeStyleSectionMinHeight = () => {
-  const yOffSetPerc = 0.333;
-  const aboutMeContainerMinHeight = yOffSetPerc * aboutMeContainer.getBoundingClientRect().height;
+  const aboutMeContainerMinHeight = calcAboutMeContainerMinHeight();
   document.getElementById('about-me-style-section').style.setProperty('--about-me-style-section-min-height', aboutMeContainerMinHeight + 'px');
 }
 
 const setAboutMeStyleSectionHeight = () => {
   if (aboutMeContainer.getBoundingClientRect().top < 0) {
-    const yOffSetPerc = 0.333;
-    const aboutMeStyleSectionHeight = -(aboutMeContainer.getBoundingClientRect().top) + yOffSetPerc * aboutMeContainer.getBoundingClientRect().height;
-    document.getElementById('about-me-style-section').style.setProperty('--about-me-style-section-height', aboutMeStyleSectionHeight + 'px');
+    const aboutMeStyleSection = document.getElementById('about-me-style-section');
+    const computedStyle = window.getComputedStyle(aboutMeStyleSection);
+    const aboutMeStyleSectionMinHeight = Number(computedStyle['min-height'].slice(0, -2));
+    const aboutMeStyleSectionHeight = -(aboutMeContainer.getBoundingClientRect().top) + aboutMeStyleSectionMinHeight;
+    aboutMeStyleSection.style.setProperty('--about-me-style-section-height', aboutMeStyleSectionHeight + 'px');
   }
 }
 
@@ -312,6 +316,32 @@ const setAboutMeStyleSectionBackgroundColor = () => {
   const randomColorIndex = Math.floor(Math.random() * colorsWithoutCurrentColor.length);
   const newColor = colorsWithoutCurrentColor[randomColorIndex];
   aboutMeStyleSection.style.setProperty('--about-me-style-section-background-color', newColor);
+}
+
+const setAboutMeStyleSectionStyles = () => {
+  setAboutMeStyleSectionMinHeight();
+  setAboutMeStyleSectionMaxHeight();
+  const aboutMeStyleSectionMinHeight = calcAboutMeContainerMinHeight();
+  /* set actual height to min-height for new displayed carousel item */
+  document.getElementById('about-me-style-section').style.setProperty('--about-me-style-section-height', aboutMeStyleSectionMinHeight + 'px');
+  setAboutMeStyleSectionBackgroundColor();
+}
+
+const calcAboutMeContainerMaxHeight = () => {
+  const aboutMeSection = document.getElementById('about-me-section');
+  /* get currently displayed carousel item of about-me-section */
+  const currentDisplayedAnoutMeSection = aboutMeSection.querySelector(':scope > :not([style*="display: none"])');
+  const aboutMeSectionHeight = currentDisplayedAnoutMeSection.getBoundingClientRect().height;
+  const aboutMeButtonContainerHeight = document.getElementById('about-me-button-container').getBoundingClientRect().height;
+  const aboutMeContainerMaxHeight = aboutMeSectionHeight + aboutMeButtonContainerHeight;
+  return aboutMeContainerMaxHeight;
+}
+
+const calcAboutMeContainerMinHeight = () => {
+  const aboutMeContainerMaxHeight = calcAboutMeContainerMaxHeight();
+  const yOffSetPerc = 0.333;
+  const aboutMeContainerMinHeight = yOffSetPerc * aboutMeContainerMaxHeight;
+  return aboutMeContainerMinHeight;
 }
 
 /* callback function for observer */
