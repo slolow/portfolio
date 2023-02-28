@@ -213,7 +213,7 @@ span.dancing {
 
 
 #about-me-section {
-    width: 50%;
+    width: 45%;
     background-color: #FFF;
     color: #005cef;
     border-radius: 1.25rem;
@@ -265,6 +265,16 @@ span.dancing {
     display: block;
     border-radius: 0.1rem;
 }
+
+#about-me-style-section {
+    width: 45%;
+    border-radius: 1.25rem;
+    background-color: var(--about-me-style-section-background-color);
+    height: var(--about-me-style-section-height, 0);
+    max-height: var(--about-me-style-section-max-height);
+    min-height: var(--about-me-style-section-min-height);
+}
+
 
 /* projects */
 
@@ -402,7 +412,7 @@ span.dancing {
     background-color: #005cef;
     font-size: 2.5rem;
     padding: 1rem;
-    margin-bottom: 7.5vw;
+    margin-bottom: 5rem;
     text-align: center;
 }
 

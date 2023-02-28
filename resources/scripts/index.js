@@ -20,6 +20,11 @@ const addEventListenerToHTMLCollection = (inputHTMLCollection, eventString, even
   return arr;
 }
 
+function rgbToHex(r, g, b) {
+  let hex = ((r << 16) | (g << 8) | b).toString(16);
+  return "#" + "0".repeat(6 - hex.length) + hex;
+}
+
 /* function calls */
 
 /* set scroll-padding-top to scroll everything to the bottom of the header */
@@ -215,6 +220,13 @@ const showNextOrPreviousCarouselItem = event => {
   carouselItems[currentShownIndex].style.display = 'none';
   showNewCarouselItem(event.target.className, carouselItems, newIndex);
   disableOrEnableButtons(event.target, newIndex);
+
+  if (event.target.classList.contains('about-me-button')) {
+    setAboutMeStyleSectionHeight();
+    setAboutMeStyleSectionMaxHeight();
+    setAboutMeStyleSectionMinHeight();
+    setAboutMeStyleSectionBackgroundColor();
+  }
 }
 
 const showClickedCarouselItem = event => {
@@ -240,6 +252,13 @@ const showClickedCarouselItem = event => {
     /* get carouselButton to coresponding cliked carouselIndicator. callsList e.g. : ['project-button next-button]  */
     const carouselButton = document.getElementsByClassName(classList.join(' '))[0];
     disableOrEnableButtons(carouselButton, newIndex);
+
+    if (event.target.classList.contains('about-me-indicator')) {
+      setAboutMeStyleSectionHeight();
+      setAboutMeStyleSectionMaxHeight();
+      setAboutMeStyleSectionMinHeight();
+      setAboutMeStyleSectionBackgroundColor();
+    }
   }
   
 }
@@ -253,6 +272,83 @@ const carouselButtonsArr = addEventListenerToHTMLCollection(carouselButtons, 'cl
 carouselButtonsArr.forEach(carouselButton => setButtonStyle(carouselButton));
 const carouselIndicators = document.getElementsByClassName('carousel-indicator');
 addEventListenerToHTMLCollection(carouselIndicators, 'click', showClickedCarouselItem);
+
+/* 3.C ABOUT-ME-STYLE-SECTION */
+
+/* functions */
+
+const setAboutMeStyleSectionMaxHeight = () => {
+  const aboutMeContainerMaxHeight = aboutMeContainer.getBoundingClientRect().height;
+  document.getElementById('about-me-style-section').style.setProperty('--about-me-style-section-max-height', aboutMeContainerMaxHeight + 'px');
+}
+
+const setAboutMeStyleSectionMinHeight = () => {
+  const yOffSetPerc = 0.333;
+  const aboutMeContainerMinHeight = yOffSetPerc * aboutMeContainer.getBoundingClientRect().height;
+  document.getElementById('about-me-style-section').style.setProperty('--about-me-style-section-min-height', aboutMeContainerMinHeight + 'px');
+}
+
+const setAboutMeStyleSectionHeight = () => {
+  if (aboutMeContainer.getBoundingClientRect().top < 0) {
+    const yOffSetPerc = 0.333;
+    const aboutMeStyleSectionHeight = -(aboutMeContainer.getBoundingClientRect().top) + yOffSetPerc * aboutMeContainer.getBoundingClientRect().height;
+    document.getElementById('about-me-style-section').style.setProperty('--about-me-style-section-height', aboutMeStyleSectionHeight + 'px');
+  }
+}
+
+const setAboutMeStyleSectionBackgroundColor = () => {
+  const aboutMeStyleSection = document.getElementById('about-me-style-section');
+  const computedStyle = window.getComputedStyle(aboutMeStyleSection);
+  const currentColorRgbString = computedStyle.backgroundColor;
+
+  /* convert current color string of type rgba(255, 69, 34, 0.5) or
+  rgb(255, 69, 34) into rgbArray [255, 69, 34]  */
+  currentColorRgbString.includes('rgba') ? prefixLength = 5 : prefixLength = 4;
+  let currentColorRgbArray = currentColorRgbString.substring(prefixLength, currentColorRgbString.length-1).split(", ");
+  const [r, g, b] = currentColorRgbArray;
+  const currentColorHexString = rgbToHex(r, g, b);
+  const colors = ['#ffdd18', '#FF1F25', '#0048bc'].map(color => color.toLowerCase());
+  const colorsWithoutCurrentColor = colors.filter(color => color != currentColorHexString);
+  const randomColorIndex = Math.floor(Math.random() * colorsWithoutCurrentColor.length);
+  const newColor = colorsWithoutCurrentColor[randomColorIndex];
+  aboutMeStyleSection.style.setProperty('--about-me-style-section-background-color', newColor);
+}
+
+/* callback function for observer */
+const addOrRemoveWindowEventListenerScroll = (entries, observer) => {
+  const observed = entries[0];
+
+  /* add eventlistener when aboutMeContainer is viewable else remove it */
+  if (observed.isIntersecting) {
+    window.addEventListener('scroll', setAboutMeStyleSectionHeight);
+    setAboutMeStyleSectionBackgroundColor();
+  } else {
+      window.removeEventListener('scroll', setAboutMeStyleSectionHeight);
+  }
+}
+
+/* function calls */
+
+/* set about-me-style-section max-height to about-me-container height on every new load and resize of window */
+['DOMContentLoaded','resize'].forEach(event => 
+  [setAboutMeStyleSectionMinHeight, 
+    setAboutMeStyleSectionMaxHeight, 
+    setAboutMeStyleSectionHeight].forEach(setAboutMeStyleFunction => window.addEventListener(event, setAboutMeStyleFunction))
+);
+
+const aboutMeContainer = document.getElementById('about-me-container');
+
+const observerOptions = {
+  root: null, 
+  rootMargin: "0px",
+  threshold: 0
+}
+
+/* create an observer */
+const observer = new IntersectionObserver(addOrRemoveWindowEventListenerScroll, observerOptions);
+
+/* observe aboutMeContainer to see if it is in viewport */
+observer.observe(aboutMeContainer);
 
 
 /* contact */
