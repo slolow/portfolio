@@ -47,6 +47,9 @@ const myNameIs = async () => {
     /* remove event listener during execution of animation */
     window.removeEventListener('scroll', myNameIs);
 
+    /*  remove css dancing class to remove default animation */
+    nameSpan.classList.remove('dancing');
+
     /* animation */
     lyrics = ["What?", "Who?", "Chicka-chicka", "Slim...", "Laszlo."];
     for (lyric of lyrics) {
@@ -130,6 +133,16 @@ const disableOrEnableButtons = (clickedButton, currentShownIndex) => {
     className = 'about-me-button';
   }
 
+  /* enable both buttons when dashboard project accessed via link from about-me-section */
+  if (clickedButton.id === 'first-project-link') {
+    const previousButton = document.getElementsByClassName(className + ' ' + 'previous-button')[0];
+    const nextButton = document.getElementsByClassName(className + ' ' + 'next-button')[0];
+    previousButton.disabled = false;
+    nextButton.disabled = false;
+    setButtonStyle(previousButton);
+    setButtonStyle(nextButton);
+  }
+
   /* always make sure previousButton is enable when next-button clicked to go on carousel element back and vice versa */
   if (clickedButton.classList.contains('next-button')) {
     const previousButton = document.getElementsByClassName(className + ' ' + 'previous-button')[0];
@@ -198,16 +211,23 @@ const setCarouselIndicatorStyles = (carouselIndicatorClassName, carouselIndicato
   carouselIndicator[newIndex].style.backgroundColor = '#FF1F25';
 }
 
-const showNewCarouselItem = (className, carouselItems, index) => {
+const showNewCarouselItem = (className, carouselItems, index, displayStyle) => {
+  carouselItems[index].style.display = displayStyle;
   if (className.includes('project')) {
-    carouselItems[index].style.display = 'grid';
     document.getElementById('projects').scrollIntoView();
     currentShownIndices['projects'] = index;
   } else {
-    carouselItems[index].style.display = 'block';
     document.getElementById('about-me').scrollIntoView();
     currentShownIndices['about-me-section'] = index;
   }
+}
+
+const getDisplayStyleOfItem = (items, index) => window.getComputedStyle(items[index]).display;
+
+const changeShownCarouselItem = (items, currentIndex, className, newIndex) => {
+  const displayStyle = getDisplayStyleOfItem(items, currentIndex);
+  items[currentIndex].style.display = 'none';
+  showNewCarouselItem(className, items, newIndex, displayStyle);
 }
 
 const showNextOrPreviousCarouselItem = event => {
@@ -217,6 +237,7 @@ const showNextOrPreviousCarouselItem = event => {
        carouselItems] = setCarouselStyles(event.target.className);
 
   /* show dahsboard project if event fired by first-link-project (in about-me section), next carousel item if fired by next-button, previous carousel item if fired by previous-button */
+  let newIndex;
   if (event.target.id === 'first-project-link') {
     newIndex = 2;
   } else if (event.target.classList.contains('next-button'))  {
@@ -226,8 +247,7 @@ const showNextOrPreviousCarouselItem = event => {
   }
 
   setCarouselIndicatorStyles(carouselIndicatorClassName, carouselIndicatorInactiveBackgroundColor, currentShownIndex, newIndex);
-  carouselItems[currentShownIndex].style.display = 'none';
-  showNewCarouselItem(event.target.className, carouselItems, newIndex);
+  changeShownCarouselItem(carouselItems, currentShownIndex, event.target.className, newIndex);
   disableOrEnableButtons(event.target, newIndex);
 
   if (event.target.classList.contains('about-me-button')) {
@@ -247,9 +267,8 @@ const showClickedCarouselItem = event => {
   /*  do nothing when clicked carousel item is already shown */
   if (newIndex !== currentShownIndex) {
     setCarouselIndicatorStyles(carouselIndicatorClassName, carouselIndicatorInactiveBackgroundColor, currentShownIndex, newIndex);
-    carouselItems[currentShownIndex].style.display = 'none';
-    showNewCarouselItem(event.target.className, carouselItems, newIndex);
-    
+    changeShownCarouselItem(carouselItems, currentShownIndex, event.target.className, newIndex);
+
     /* simulate a carousel-button to update disabled propertie of real carousel-buttons */
     const classList = [];
     event.target.classList.contains('project-indicator') ? classList.push('project-button') : classList.push('about-me-button');
