@@ -30,8 +30,7 @@
         <!-- banner -->
         <section id="banner" class="main-section">
                 <p>Hi,</p>
-                <p class="name-paragraph">my name is <span class="yellow dancing">...</span></p>
-                <p class="name-paragraph">my name is <span class="yellow" id="full-name"></span></p>
+                <p class="name-paragraph">my name is <span class="yellow dancing">...</span> <span class="yellow" id="full-name"></span></p>
                 <p>I'm a <span class="yellow">fullstack developer.</span></p>
                 <a href="#about-me"><span class="arrow down">&#8595;</span></a> 
         </section>
@@ -42,19 +41,19 @@
             <div id="about-me-container" class="flex-container">
                 <section id="about-me-section">
                     <section id="about-me-desc" class="about-me-section carousel-item">
-                        <article>Since I build my <a href="#projects" id="first-project-link" class="project-button">first web app</a> in 2020 I'm spending a lot of my free time to learn about 
+                        <article>Since I build my <a href="#projects" id="first-project-link" class="project-button">first web app</a> in 2020, I'm spending a lot of my free time to learn about 
                             web development. Currently I'm following the <a href="https://join.codecademy.com/learn/paths/front-end-engineer-career-path-b/" target="_blank">
                             Front-End Engineer Career Path</a> from Codecademy. I also took more backend related courses like 
                             <a href="https://cs50.harvard.edu/web/2018/" target="_blank">CS50’s Web Programming with Python and JavaScript</a> from Harvard University.
-                            You're invited to check some of my projects <a href="#projects">here</a>.
-                            I'm searching for an opportunity to work in the field of web development to learn more about it.</article>
+                            See some of my projects <a href="#projects">here</a>.
+                            For my future I'm searching an opportunity to work in the field of web development to learn more about it.</article>
                     </section>
                     <section id="about-me-list" class="about-me-section carousel-item">
                         <ul>
                             <li>🎓 I have a M.Sc. degree in electrical engineering</li>
                             <li>💻 I worked for <a href="https://www.sma.de/" target="_blank">SMA</a>, <a href="https://www.iee.fraunhofer.de/" target="_blank">Fraunhofer IEE</a> and <a href="https://www.htw-berlin.de/" target="_blank">HTW</a> as a student</li>
                             <li>🏙️ I'm living in Berlin</li>
-                            <li>🗣️ I speak german, french and english</li>
+                            <li>🗣️ I speak German, French and English</li>
                             <li>⚽ I love to play football</li>
                             <li>🎼 I listen to a lot of music</li>
                             <li>📽️ I like to go to the cinema</li>
@@ -86,7 +85,7 @@
 
             <!-- book-rating-app -->
             <div class="project-container carousel-item" id="book-rating-project">
-                <h3 class="project-title">1. Book Review App</h3>
+                <h3 class="project-title">1. Book Review</h3>
                 <section class="project-description">
                     <h4>Description:</h4>
                     <p>This book rating app is part of the <a href="https://cs50.harvard.edu/web/2018/" target="_blank">CS50’s Web Programming with Python and JavaScript</a> course from Harvard University.</p> 
@@ -215,7 +214,6 @@
                         which I'm currently working on.</p>
                 </section>
                 <div class="project-video-container empty">
-                    <div id="totoro"></div>
                 </div>   
                 <section class="project-tech-stack">
                     <h4>Tech Stack:</h4>
@@ -250,7 +248,7 @@
         <!-- contact -->
         <section id="contact" class="main-section">
             <h2>Here's my email, <span>so write me</span>, maybe</h2>
-            <div class="flex-container">
+            <div class="flex-container contact-container">
                 <form action="https://formsubmit.co/266516a83c21c8595171f1c2d327d848" method="POST" id="contact-form">
                     <label for="fname">First name:</label>
                     <!-- name must start with one uppercase or lowercase letter followed by 2 to 49 lowwercase letters -->
@@ -302,7 +300,7 @@
         </section>
 
         <footer>
-            <p class="copyright">&copy Laszlo Starost 2023</p>
+            <p class="copyright">&copy Laszlo Starost <span id="currentYear"></span></p>
             <a href="https://github.com/slolow" target="_blank" class="github-logo-link"><img src="resources/images/github-mark/github-mark-white.svg" alt="github logo" class="github-logo"></a>
         </footer>
     </main>

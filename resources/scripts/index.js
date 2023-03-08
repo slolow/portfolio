@@ -37,18 +37,21 @@ document.documentElement.style.setProperty('scroll-padding-top', scrollPaddingTo
 
 /* functions */
 
+const setHiMargin = () => {
+const banner = document.getElementById('banner');
+var hiElement = banner.querySelector('p:first-child');
+hiElement.style.margin = window.innerHeight / 6 +'px' + ' 0 ' +  window.innerHeight / 3 + 'px' + ' 0';
+}
+
 /* show fullname in banner when in view field */
 const myNameIs = async () => {
   const nameSpan = document.getElementById("full-name");
   
   /* start animation when full-name span (nameSpan) is completly in view field  */
-  if (innerHeight + scrollY >= nameSpan.getBoundingClientRect().bottom) {
+  if (window.innerHeight > nameSpan.getBoundingClientRect().bottom) {
 
     /* remove event listener during execution of animation */
     window.removeEventListener('scroll', myNameIs);
-
-    /*  remove css dancing class to remove default animation */
-    nameSpan.classList.remove('dancing');
 
     /* animation */
     lyrics = ["What?", "Who?", "Chicka-chicka", "Slim...", "Laszlo."];
@@ -63,6 +66,9 @@ const myNameIs = async () => {
 };
 
 /* function calls */
+
+['DOMContentLoaded','resize'].forEach(event => window.addEventListener(event, setHiMargin));
+
 window.addEventListener('scroll', myNameIs);
 
 /* const nameSpan = document.getElementById("full-name");
@@ -431,3 +437,15 @@ if (document.referrer === 'https://formsubmit.co/') {
   thankYouMsg.style.display = 'block';
   thankYouMsg.scrollIntoView();
 }
+
+/* footer */
+
+/* functions */
+const setCurrentYear = () => {
+  const currentYear = new Date().getFullYear();
+  document.getElementById('currentYear').textContent = currentYear;
+}
+
+/* function calls */
+
+setCurrentYear();
