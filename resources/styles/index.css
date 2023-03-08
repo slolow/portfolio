@@ -24,6 +24,10 @@ h4 {
     font-size: 1rem;
 }
 
+li {
+    line-height: 2.5;
+}
+
 .main-section {
     padding: 7.5vw;
     overflow: hidden;
@@ -37,7 +41,6 @@ h4 {
 .primary-button {
     box-sizing: border-box;
     display: block;
-/*     width: 30%; */
     border: solid 5px;
     border-radius: 20px;
     font-size: 1.25rem;
@@ -85,7 +88,7 @@ h4 {
     cursor: var(--cursor);
     box-shadow: var(--box-shadow);
 }
-
+  
 .carousel-indicator {
     width: 1rem;
     height: 1rem;
@@ -101,10 +104,10 @@ h4 {
 
 @keyframes upAndDown {
     0% {
-        top: 0;
+        top: -1.5rem;
     }
     100% {
-        top: 1rem;
+        top: -0.5rem;
     }
 }
 
@@ -159,18 +162,19 @@ header a:hover {
 /*  banner */
 #banner {
     background-color: #FF1F25;
+    line-height: 2;
 }
 
 #banner p:not(#banner p:first-child) {
     font-size: 5rem;
     color: #FFF;
+    margin: 0 0 2rem 0;
 }
 
 #banner p:first-child {
     font-size: 10rem;
     color: #ffdd18;
     text-shadow: -0.5rem 0.5rem #005cef;
-    margin: 5.5rem 0;
 }
 
 #banner .arrow.down {
@@ -185,6 +189,10 @@ header a:hover {
 span.yellow {
     color: #ffdd18;
     text-shadow: -0.25rem 0.25rem #005cef;
+}
+
+span.yellow:not(span.dancing) {
+    display: block;
 }
 
 span.dancing {
@@ -213,14 +221,14 @@ span.dancing {
 
 
 #about-me-section {
-    width: 45%;
+    width: 70%;
     background-color: #FFF;
     color: #005cef;
     border-radius: 1.25rem;
 }
 
 .about-me-section {
-    padding: 2rem 2rem 1rem 2rem;
+    padding: 5% 2%;
 }
 
 /* show only about-me-desc as default */
@@ -242,7 +250,7 @@ span.dancing {
 }
 
 #about-me article {
-    line-height: 2.5rem;
+    line-height: 2.5;
 }
 
 #about-me-list ul {
@@ -267,14 +275,13 @@ span.dancing {
 }
 
 #about-me-style-section {
-    width: 45%;
+    width: 20%;
     border-radius: 1.25rem;
     background-color: var(--about-me-style-section-background-color);
     height: var(--about-me-style-section-height, 0);
     max-height: var(--about-me-style-section-max-height);
     min-height: var(--about-me-style-section-min-height);
 }
-
 
 /* projects */
 
@@ -300,7 +307,17 @@ span.dancing {
 }
 
 #projects p {
-    line-height: 2rem;
+    line-height: 2.5;
+}
+
+#book-rating-project h3::after {
+    content: ' App';
+}
+
+@media only screen and (max-width: 815px) {
+    #book-rating-project h3::after {
+        content: '';
+    }
 }
 
 .project-container {
@@ -314,7 +331,7 @@ span.dancing {
     background-color:#005cef;
     justify-items: stretch;
     align-items: stretch;
-    padding: 1rem 2rem;
+    padding: 2%;
     border-radius: 1.25rem 1.25rem 0 0;
 }
 
@@ -324,7 +341,7 @@ span.dancing {
 
 .project-container > section {
     background-color: #FFF;
-    padding: 1rem;
+    padding: 5% 2%;
 }
 
 /* show only book-rating-app as default */
@@ -358,17 +375,12 @@ span.dancing {
 }
 
 .project-video-container.empty {
-    overflow: hidden;
     background-color: #FFF;
-    border-radius: 1.25rem;
-}
-
-#totoro {
-    height: 8.33rem;
-    width: 8.33rem; /* change width to 400px to have two totoros walking side by side */
-    margin: 10% auto;
     background-image: url("../images/todoro-miyazaki.gif");
     transform: scaleX(-1);
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 1.25rem;
 }
 
 #projects a, #about-me a {
@@ -378,6 +390,10 @@ span.dancing {
 
 #projects a:hover, #about-me a:hover {
     text-decoration: underline;
+}
+
+#projects ul {
+    margin: 2rem 0 1rem 0;
 }
 
 #projects li {
@@ -401,7 +417,6 @@ span.dancing {
     background-color: #FF1F25;
 }
 
-
 /*  contact */
 #contact {
     background-color: #FF1F25;
@@ -424,6 +439,8 @@ span.dancing {
     display: inline-flex;
     flex-direction: column;
     justify-content: space-evenly;
+    align-items: stretch;
+    max-width: 50%;
 }
 
 #contact .i-love-to-code {
@@ -571,4 +588,185 @@ form:valid input.primary-button:hover {
 .thank-you-message {
     display: none;
     margin-bottom: 0;
+}
+
+/* media queries */
+
+/* styles for touch-based devices */
+@media (pointer: coarse) {
+
+    /* universal */
+    .primary-button:hover {
+        top: 0;
+    }
+
+    .primary-button:active {
+        top: 0.1rem;
+    }
+
+    .previous-button:hover, .next-button:hover {
+        box-shadow: none;
+    }
+
+    .previous-button:active, .next-button:active {
+        box-shadow: var(--box-shadow);
+    }
+
+    /* projects */
+
+    #projects a, #about-me a {
+        text-decoration: underline;
+    }
+}
+
+/* breakpoint to centered design */
+@media only screen and (max-width: 1195px) {
+
+    /* universal */
+    h2 {
+        text-align: center;
+    }
+
+    /* banner */
+
+    #banner {
+        text-align: center;
+    }
+
+    /* about-me */
+
+    #about-me-section {
+        width: 100%;
+    }
+
+    #about-me-style-section {
+        display: none;
+    }
+
+    /* projects */
+
+    .project-container {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .project-video-container.empty {
+        display: none;
+    }
+
+    .project-video-container iframe {
+        min-height: 15rem;
+    }
+
+}
+
+/* 768px --> typ. tablet in portrait orientation */
+@media only screen and (max-width: 768px) {
+
+    /* universal */
+    html, body {
+      font-size: 20px;
+    }
+
+    /* contact */
+
+    input.primary-button {
+        width: 100%;
+        margin-top: 5%;
+    }
+}
+
+/* breakpoint less padding */
+@media only screen and (max-width: 650px) {
+
+    /* universal */
+
+    .main-section {
+        padding: 15vh 2vw 15vh 2vw;
+    }
+
+    .flex-container {
+        justify-content: flex-end;
+    }
+    
+}
+
+/* breakpoint to avoid overflow of banner text */
+@media only screen and (max-width: 565px) {
+    #banner p:first-child {
+        font-size: 9rem;
+        text-shadow: -0.45rem 0.45rem #005cef;
+    }
+
+    #banner p:not(#banner p:first-child) {
+        font-size: 4.5rem;
+    }
+
+    span.yellow {
+        text-shadow: -0.225rem 0.225rem #005cef;
+    }
+}
+
+/* 480px --> typ. mobile */
+@media only screen and (max-width: 480px) {
+
+    /* universal */
+
+    html, body {
+      font-size: 16px;
+    }
+
+    .flex-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* contact */
+
+    #contact form, .i-love-to-code {
+        max-width: 100%;
+    }
+
+    .i-love-to-code {
+        margin-top: 20%;
+    }
+}
+
+/* styles for mopbile devices from 320px to 430px */
+@media only screen and (max-width: 430px) {
+
+    /* universal */
+    h2 {
+        font-size: 3.5rem;
+    }
+
+    h3 {
+        font-size: 2rem;
+    }
+
+    .carousel-button {
+        font-size: 3.5rem;
+    }
+
+    /* banner */ 
+
+    #banner p:first-child {
+        font-size: 7rem;
+        text-shadow: -0.35rem 0.35rem #005cef;
+    }
+
+    #banner p:not(#banner p:first-child) {
+        font-size: 3.5rem;
+    }
+
+    span.yellow {
+        text-shadow: -0.175rem 0.175rem #005cef;
+    }
+
+    /* projects */
+    .project-container h4 {
+        text-decoration: none;
+        font-size: 1.5rem;
+    }
 }
