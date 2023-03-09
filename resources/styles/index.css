@@ -163,6 +163,7 @@ header a:hover {
 #banner {
     background-color: #FF1F25;
     line-height: 2;
+    padding: 0 7.5vw 7.5vw 7.5vw;
 }
 
 #banner p:not(#banner p:first-child) {
@@ -688,6 +689,12 @@ form:valid input.primary-button:hover {
 
     .flex-container {
         justify-content: flex-end;
+    }
+
+    /* banner */
+
+    #banner {
+        padding: 0 2vw 15vh 2vw;
     }
     
 }

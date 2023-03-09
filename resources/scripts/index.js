@@ -28,9 +28,10 @@ function rgbToHex(r, g, b) {
 /* function calls */
 
 /* set scroll-padding-top to scroll everything to the bottom of the header */
-const headerHeight = document.getElementsByTagName('Header')[0].getBoundingClientRect().bottom;
-const scrollPaddingTop = headerHeight - 0.01*headerHeight; /* needed to work in chrome */
-document.documentElement.style.setProperty('scroll-padding-top', scrollPaddingTop + 'px');
+const setscrollPaddingTop	= () => {
+  const headerHeight = document.getElementsByTagName('Header')[0].getBoundingClientRect().height;
+  document.documentElement.style.setProperty('scroll-padding-top', headerHeight + 'px');
+}
 
 
 /* 2. BANNER */
@@ -39,8 +40,12 @@ document.documentElement.style.setProperty('scroll-padding-top', scrollPaddingTo
 
 const setHiMargin = () => {
 const banner = document.getElementById('banner');
-var hiElement = banner.querySelector('p:first-child');
-hiElement.style.margin = window.innerHeight / 6 +'px' + ' 0 ' +  window.innerHeight / 3 + 'px' + ' 0';
+const hiElement = banner.querySelector('p:first-child');
+
+/* calc margin to vetically center Hi in viewport */
+const hiElementHeight = hiElement.getBoundingClientRect().height;
+const margin = (window.innerHeight - hiElementHeight) / 2;
+hiElement.style.margin = margin +'px' + ' 0';
 }
 
 /* show fullname in banner when in view field */
@@ -67,7 +72,10 @@ const myNameIs = async () => {
 
 /* function calls */
 
-['DOMContentLoaded','resize'].forEach(event => window.addEventListener(event, setHiMargin));
+['DOMContentLoaded','resize'].forEach(event => 
+  [setHiMargin, 
+  setscrollPaddingTop].forEach(setStyleFunction => window.addEventListener(event, setStyleFunction))
+);
 
 window.addEventListener('scroll', myNameIs);
 
