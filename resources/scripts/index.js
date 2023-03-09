@@ -79,15 +79,6 @@ const myNameIs = async () => {
 
 window.addEventListener('scroll', myNameIs);
 
-/* const nameSpan = document.getElementById("full-name");
-const nameSpanObserverOptions = {
-  root: null, 
-  rootMargin: "0px",
-  threshold: 0
-}
-const nameSpanObserver = new IntersectionObserver(myNameIs, nameSpanObserverOptions);
-nameSpanObserver.observe(nameSpan); */
-
 
 /* 3. PROJECTS AND ABOUT-ME */
 
