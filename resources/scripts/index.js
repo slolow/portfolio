@@ -434,7 +434,15 @@ addEventListenerToHTMLCollection(formInputs, 'input', validateInput);
 if (document.referrer === 'https://formsubmit.co/') {
   const thankYouMsg = document.querySelector('.thank-you-message');
   thankYouMsg.style.display = 'block';
-  thankYouMsg.scrollIntoView();
+  const headerHeight = document.getElementsByTagName('Header')[0].getBoundingClientRect().height;
+
+/* Using requestAnimationFrame() in this way ensure that the thankYouMsg is fully rendered before we calculate his bottom position and then scroll to it */
+  requestAnimationFrame(() => {
+    const scrollPosition = thankYouMsg.getBoundingClientRect().bottom + headerHeight;
+    window.scrollTo({
+      top: scrollPosition
+    });
+  });
 }
 
 /* footer */
