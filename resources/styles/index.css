@@ -8,7 +8,7 @@ body {
     scroll-behavior: smooth;
     
     /* set scroll-padding-top to scroll evrything to the bottom of the header */
-    scroll-padding-top: var(--scroll-padding-top);
+/*     scroll-padding-top: var(--scroll-padding-top); */
 }
 
 h2 {

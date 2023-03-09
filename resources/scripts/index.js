@@ -28,10 +28,10 @@ function rgbToHex(r, g, b) {
 /* function calls */
 
 /* set scroll-padding-top to scroll everything to the bottom of the header */
-const setscrollPaddingTop	= () => {
+/* const setscrollPaddingTop	= () => {
   const headerHeight = document.getElementsByTagName('Header')[0].getBoundingClientRect().height;
   document.documentElement.style.setProperty('scroll-padding-top', headerHeight + 'px');
-}
+} */
 
 
 /* 2. BANNER */
@@ -73,8 +73,7 @@ const myNameIs = async () => {
 /* function calls */
 
 ['DOMContentLoaded','resize'].forEach(event => 
-  [setHiMargin, 
-  setscrollPaddingTop].forEach(setStyleFunction => window.addEventListener(event, setStyleFunction))
+  [setHiMargin].forEach(setStyleFunction => window.addEventListener(event, setStyleFunction))
 );
 
 window.addEventListener('scroll', myNameIs);
