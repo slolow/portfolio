@@ -1,5 +1,9 @@
 # portfolio
 
+## see in action
+
+See the project [here](slolow.github.io)
+
 ## About the project
 
 This project is part of [Front-End Engineer Career Path](https://www.codecademy.com/learn/paths/front-end-engineer-career-path).
