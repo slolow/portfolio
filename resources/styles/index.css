@@ -228,7 +228,7 @@ span.dancing {
     border-radius: 1.25rem;
 }
 
-.about-me-section:not(#about-me-pic) {
+.about-me-section {
     padding: 5% 2%;
 }
 
@@ -262,17 +262,6 @@ span.dancing {
 
 #about-me-list li {
     padding-bottom: 2rem;
-}
-
-#about-me-pic {
-    overflow: hidden;
-}
-
-#about-me-pic img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 1.25rem 1.25rem 0 0;
 }
 
 #about-me-style-section {
